@@ -11,39 +11,31 @@ import '../less/style.less';
 import './util/fx';
 /** Animated show, hide, toggle, and fade*() methods. */
 import './util/fx_methods';
+import '../js/lib/mmd-plugin.min.1.0.2';
+import '../js/lib/mmd.videoplayer.min.1.0.1';
 
 // 引入的包根据实际情况而定
-import LoadViewController from './app/LoadViewController';
-import IndexViewController from './app/IndexViewController';
+import LoadViewController from './app/ViewController/LoadViewController';
 
 // 页面级对象池
 var pagePool = {
     loadView: null,
-    indexView: null
+    videoView: null,
+    indexView: null,
+    frameView: null
 };
 
 var init = function () {
     // load页面
     var loadPageBack = function () {
         pagePool.loadView = pagePool.loadView || new LoadViewController();
-
         var loadView = pagePool.loadView;
-        loadView.show();
-        loadView.onhide = indexPageBack;
-
         loadView.load();
+        // loadView.onhide = videoPageBack;
     };
-
-    // index页面
-    var indexPageBack = function () {
-        pagePool.indexView = pagePool.indexView || new IndexViewController();
-
-        var indexView = pagePool.indexView;
-        indexView.show();
-        // indexView.onhide = gamePageBack;
-    };
-
     loadPageBack();
+
+    // 测试时
 };
 
 init();

@@ -66,13 +66,14 @@ module.exports = function () {
                             loader: 'url-loader',
                             options: {
                                 limit: 3000,
-                                name: 'img/[name].[hash:8].[ext]'
-                            }
+                                name: 'img/[name].[hash:8].[ext]',
+                                esModule: false,
+                            },
                         }
                     ]
                 },
                 {
-                    test: /\.(mp3|mp4)$/,
+                    test: /\.(mp3|mp4|m4v)$/,
                     include: [
                         path.resolve(__dirname, 'src/media')
                     ],

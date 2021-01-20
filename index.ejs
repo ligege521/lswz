@@ -5,19 +5,23 @@
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <![endif]-->
-    <title>Treedom</title>
+    <title>乱世王者-门神现金裂变</title>
+    <!-- 页面设计：青木文化 | 页面制作：青木文化 | 创建：2021-01-19 -->
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta name="robots" content="all">
     <meta name="author" content="Tencent-CP">
     <meta name="Copyright" content="Tencent">
-    <meta name="Keywords" content="">
-    <meta id="share-description" itemprop="description" name="Description" content="">
+    <meta name="Keywords" content="乱世王者, 门神, 现金, 裂变, 年兽, 打年兽">
+    <meta id="share-description" itemprop="description" name="Description" content="乱世王者-门神现金裂变">
     <meta id="share-name" itemprop="name" content="">
     <meta id="share-image" itemprop="image" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     
+    <script src="<%=require ('./src/js/lib/mmd-plugin.min.1.0.2.js')%>"></script>
+    <script src="<%=require ('./src/js/lib/mmd.videoplayer.min.1.0.1.js')%>"></script>
+    <script src="<%=require ('./src/js/lib/vconsole.min.js')%>"></script>
     <!-- rem布局初始化设置start -->
     <script type="text/javascript">
         <%= require('raw-loader!./src/js/app/rem.js') %>
@@ -40,21 +44,343 @@
     <!-- <script id="__ga" type="text/javascript" src="https://ga.treedom.cn/ga.js?v=0.3.4&pid=9999"></script> -->
 </head>
 <body>
-    <div class="m-main-wrap absf">
-
-        <!-- 可删除 start -->
-        <button style="position: absolute;z-index: 2;top: 40%;left: 20%;" onclick="document.querySelector('.m-vertical').style.display='block';document.querySelector('.m-horizontal').style.display='none'">竖屏显示</button>
-        <button style="position: absolute;z-index: 2;right: 20%;top: 40%;" onclick="document.querySelector('.m-vertical').style.display='none';document.querySelector('.m-horizontal').style.display='block'">横屏显示</button>
-        <!-- 可删除 end -->
-        
+    <div class="m-main-wrap absf">        
         <!-- 竖屏页 -->
         <div class="m-vertical absf">
             <div class="m-wrap sizcover abcter">
                 <!-- 业务逻辑代码 stat -->
 
-                <div class="m-loading"></div>
-                <div class="m-end"></div>
+                <div class="m-loading abcter hide">
+                    <div class="loading-bg abcter sizcont">
+                        <div class="icon-loading abs"></div>
+                        <!-- 加载 -->
+                        <div class="loading-ani abcter">
+                        </div>
+                        <div class="progress_box abcter">
+                            <div class="loading_progress_bg abcter"></div>
+                            <div class="move abcter">
+                                <div class="loading_progress abcter"></div>
+                                <div class="progress_header abcter"></div>
+                                <div class="progress_text abcter"></div>
+                            </div>
+                        </div>
+                        <div class="start-btn abs hide"></div>
+                    </div>
+                </div>
+                <div class="m-video abcter sizcont hide">
+                    <!-- <video class="video sizcont abcter" src="<%= require('./src/media/vh.mp4')%>" preload="auto"></video> -->
+                    <div class="btn-start abcter hide"></div>
+                    <div class="btn-skip abs sizcover hide"></div>
+                    <div class="btn-open abcter sizcont hide"></div>
+                    <div class="btn-help abcter sizcont hide"></div>
+                    <div>
+                        <div style="position: absolute;" class="video-box">
+                            <video id="video" class="video" style="display:none;" preload="auto" webkit-playsinline="" playsinline="" x5-video-player-type="h5-page"></video>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-audio hide" id="m-audio">
+                    <audio id='audio' src=" <%= require('./src/media/audio.mp3') %>" loop></audio>
+                </div>
+
+                <div class="m-index sizcover abcter hide">
+                    <div class="container abcter">
+                        <div class="btn-back abs sizcover"></div>
+                        <div class="btn-relus abs sizcover"></div>
+                        <!-- 积分奖品 -->
+                        <div class="reward-box">
+                            <div class="prize-wrap abs">
+                                <div class="prize-one prize sizcover">
+                                    <div class="prize-15 prize-img abcter sizcover"></div>
+                                    <div class="state state-0 abcter sizcover"></div>
+                                </div>
+                                <div class="prize-two  prize sizcover">
+                                    <div class="prize-game prize-img abcter sizcover"></div>
+                                    <div class="state state-0 abcter sizcover"></div>
+                                </div>
+                                <div class="prize-three prize sizcover">
+                                    <div class="prize-888 prize-img abcter sizcover"></div>
+                                    <div class="state state-0 abcter sizcover"></div>
+                                </div>
+                            </div>
+                            <div class="progress_wrap abcter sizcover">
+                                <div class="point-box abcter">
+                                    <div class="point-2000 point-img abcter"></div>
+                                    <div class="point-8888 point-img abcter"></div>
+                                    <div class="point-10000 point-img abcter"></div>
+                                </div>
+                                <div class="progress-value sizcover"></div>
+                            </div>
+                        </div>
+                        <!-- 我的积分 -->
+                        <div class="center-box abs">
+                            <div class="my-value-wrap sizcover abcter">
+                                <div class="my-value abcter">8888</div>
+                            </div>
+                            <div class="share-friend siz abcter">
+                                <div class="gift_bag sizcover"></div>
+                                <div class="share_btn sizcover"></div>
+                                <div class="share_mess sizcover"></div>
+                            </div>
+                        </div>
+                        <div class="bottom-box abs sizcover permit-scroll">
+                            <div class="list-help sizcover permit-scroll">
+                                <!-- 好友助力榜 -->
+                                <div class="scroll-box">
+                                    <div class="item-help act-item sizcover permit-scroll"></div>
+                                    <div class="item-help act-item sizcover permit-scroll"></div>
+                                    <div class="item-help act-item sizcover permit-scroll"></div>
+                                    <div class="item-help act-item sizcover permit-scroll"></div>
+                                    <div class="item-help sizcover permit-scroll"></div>
+                                    <div class="item-help sizcover permit-scroll"></div>
+                                    <div class="item-help act-item sizcover permit-scroll"></div>
+                                    <div class="item-help sizcover permit-scroll"></div>
+                                    <div class="item-help sizcover permit-scroll"></div>
+                                    <div class="item-help act-item sizcover permit-scroll"></div>
+                                </div>
+                            </div>
+                            <!-- 点击查看详情 -->
+                            <div class="btn-checkDet abcter"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 弹框模块 -->
+                <div class="m-frame absf sizcover hide">
+                    <div class="share abcter hide">
+                        <div class="share-icon"></div>
+                    </div>
+                    <!-- <div class="block-wrap frame abcter sizcover hide">
+                        <div class="btn-hide-frame abs sizcont"></div>
+                    </div> -->
+                    <!-- frist -->
+                    <div class="frist-wrap frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <!-- new_user_tip -->
+                    <div class="new-user-wrap frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="download btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <!-- new_user_reward  -->
+                    <div class="new-user-reward-wrap frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <!-- 8888奖励  -->
+                    <div class="point-8888-wrap frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <!-- old_user  -->
+                    <div class="old-user-wrap frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <!-- none  -->
+                    <div class="none-wrap frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <!-- no_found_role -->
+                    <div class="no-found-role frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="reset btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <!-- qualified -->
+                    <div class="qualified-wrap frame abcter siz hide">
+                        <div class="content btn-hide abcter sizcover"></div>
+                        <div class="confirm button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <!-- tip_name -->
+                    <div class="tip-name-wrap frame abcter siz hide">
+                        <!-- <div class="content abcter sizcover"></div> -->
+                        <div class="tip-text abcter">亲爱的主公，您选择进行鉴定的游戏角色是：</div>
+                        <div class="tip-name abcter">【 我的名字 】</div>
+                        <div class="btn-box abcter">
+                            <div class="appraisal button sizcover"></div>
+                            <div class="reset button sizcover"></div>
+                        </div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                      <!-- help_com  -->
+                      <div class="help-com-wrap frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                     <!-- succeed  -->
+                     <div class="succeed-wrap frame abcter siz hide">
+                        <div class="content abcter sizcover">
+                            <div class="message-1 text">
+                                已为好友助力<text class="value">xxx</text>值！
+                            </div>
+                            <div class="message-2 text">
+                                下载游戏, 可为好友获得更高助力值哦~
+                            </div>
+                        </div>
+                        <div class="download button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                     <!-- game_role  -->
+                     <div class="game-role-wrap frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="download btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <!-- 转盘 -->
+                    <div class="roulette-wrap abcter siz sizcover hide">
+                        <div id="ltpanel" class="panel"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+
+                    <!-- 规则弹框 -->
+                    <div class="relus-wrap absf sizcover hide permit-scroll">
+                        <div class="relus-text permit-scroll">
+                            <h6>【活动范围】</h6>
+                            本活动规则针对用户在本H5内参与下载《乱世王者》游戏/分享H5达到规定助力值以获取奖励活动；
+                            <h6>【活动时间】</h6>
+                            2021年X月X日至2021年X月X日
+                            <h6>【参与方法】</h6>
+                            （1）本活动限微信、QQ用户参加；活动奖励每日名额有限，先到先得，如用户达到规定助力值，即可获得对应奖励。如当日奖励名额发放完毕，用户可在次日（活动期限内）重新返回本H5进行奖励领取/抽奖；<br>
+                            （2）进入本H5并观看完引入动画后，用户将获得初始助力值888。点击“助力门神”按钮，将提示用户获得游戏礼包及现金红包。《乱世王者》新用户可下载并登录游戏，再回到本H5领取红包及游戏礼包奖励；老用户可进行游戏登录，领取游戏内大礼包奖励，并获得100-200助力值。用户也可直接进入活动页面，用户在奖励活动时间内可发起活动以获取奖励，若奖励活动结束则无法获取；<br>
+                            （3）用户进入活动页面后，可查看自身当前助力值、获取对应奖励的助力值差值、对应奖励、好友助力榜。助力值分为三个档位，分别为2000、8888、10000。用户达到2000，可领取现金红包15元（QQ用户获得等值Q币）；用户达到8888，可获得《乱世王者》门神君主形象（30天）、橙色将魂*3，寻龙令*8，高级行军加速*8；用户达到10000，可获得现金红包28元、现金红包88元、现金红包888元、门神君主形象（60天）抽奖机会。用户可以通过邀请好友助力提高助力值（随机生成10-15），若好友通过点击用户链接并进行助力及游戏下载，则可生成200-400的更高助力值；<br>
+                            （4）用户参与活动后可邀请好友助力时间为XXX，超出时间后好友将无法助力；<br>
+                            （5）每位用户最多可以帮助1位好友助力；<br>
+                            （6）微信用户获得现金红包可在“微信钱包”查看；QQ用户红包将以等值Q币形式获得。<br>
+                            
+                            <h6>【注意事项】</h6>
+                            （1）用户在奖励活动时间内可发起活动，若奖励活动时间结束则无法发起；<br>
+                            （2）参与活动过程中，需要授权微信/QQ，若未授权，可能会出现无法分享或参与活动的情况；<br>
+                            （3）用户参与所获得的奖励存在随机性及时效性，不确保所有用户均能获得奖励，实际奖励金额以页面实时展示结果为准。<br>
+                        </div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <!-- 领奖框 -->
+                    <div class="reward-2000 frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <div class="reward-8888 frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+
+                    <!-- 抽奖劵 -->
+                    <div class="money-28 frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <div class="money-88 frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <div class="money-100 frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <div class="money-888 frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive btn-hide button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+
+                    <!-- 选区框 -->
+                    <div class="section-frame frame abcter siz hide">
+                        <div class="content abcter sizcover">
+                            <div class="sect-title sizcont"></div>
+                            <label for="platform">
+                                平台:
+                                <select class="platform select sizcont" id="platform">
+                                    <option value="#">请选择平台</option>
+                                </select>
+                            </label>
+                            <label for="system">
+                                系统:
+                                <select class="system select sizcont" id="system">
+                                    <option value="">请选择系统</option>
+                                </select>
+                            </label>
+                            <label for="server">
+                                服务:
+                                <select class="server select sizcont" id="server">
+                                    <option value="">请选择服务器</option>
+                                </select>
+                            </label>
+                            <label for="role">
+                                角色:
+                                <select class="role select sizcont" id="role">
+                                    <option value="">请选择角色</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="confirm button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcont"></div>
+                    </div>
+                    <!-- friend-list -->
+                    <div class="friend-wrap frame abcter siz hide">
+                        <div class="list-title sizcover"></div>
+                        <div class="list-container permit-scroll">
+                            <div class="friend-item permit-scroll">
+                                <div class="avatar sizcover"></div>
+                                <div class="name">呢称xxxx</div>
+                                <div class="value">440</div>
+                            </div>
+                            <div class="friend-item permit-scroll">
+                                <div class="avatar sizcover"></div>
+                                <div class="name">呢称xxxx</div>
+                                <div class="value">420</div>
+                            </div>
+                        </div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                </div>
+
+                <!-- 客态页模块 -->
+                <div class="m-visitors sizcover abcter hide">
+                    <div class="btn-relus sizcover abcter"></div>
+                    <div class="visitors-main abcter">
+                        <div class="top-content">
+                            <div class="top-title sizcover"></div>
+                            <div class="friend-value sizcover"></div>
+                            <div class="title-text sizcover"></div>
+                            <div class="button-box">
+                                <div class="help_friend-btn sizcover"></div>
+                                <div class="invitation-btn sizcover"></div>
+                            </div>
+                            <div class="invitation-tip sizcover"></div>
+                        </div>
+                        <div class="friend-list sizcover">
+                            <div class="list-container">
+                                <div class="friend-item">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">440</div>
+                                </div>
+                                <div class="friend-item">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">420</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 
+                <div class="m-end"></div>
                 <!-- 业务逻辑代码 end -->
             </div>
         </div>
@@ -80,6 +406,8 @@
             </div>
         </div>
     </div>
+    
+        
 
     <!-- 微信分享JSDK 需要时打开 -->
     <!-- <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> -->
@@ -89,7 +417,33 @@
 
     <!-- 本地zepto -->
     <script src="<%= require('./src/js/lib/zepto.min.1.2.js') %>"></script>
-    
+    <script src="<%= require('./src/js/lib/loteryround.min.js')%>"></script>
+    <script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+    <script src="https://ossweb-img.qq.com/images/spiderMediaData/slg_new/mediaURLData_https.js"></script>
+    <script src="//ossweb-img.qq.com/images/js/TGMobileShare/TGMobileShare.min.js"></script>
+    <script>
+        TGMobileShare({
+        shareTitle:'乱世王者', //不设置或设置为空时，页面有title，则调取title
+        shareDesc:'', //不设置或设置为空时，页面有Description，则调取Description
+        shareImgUrl:'game.gtimg.cn/images/tgideas/act/a20151127tgmsdemo/share.jpg', //分享图片尺寸200*200，且填写绝对路径
+        shareLink:'game.gtimg.cn/images/slg/cp/a20210119ms/index.html', //分享链接要跟当前页面同域名(手Q分享有这个要求) ,不设置或设置为空时，默认调取当前URL
+        actName:'a20210119ms' //点击流命名，用于统计分享量，专题一般采用目录名称如a20151029demo
+        });
+    </script>
+    <script>
+        //此段代码不能放到外链JS中，
+        var setSite={ //设置网站属性 
+            siteType:"a20210119ms", //必填项:"os"代表是官网，如果不是，则填写actName例如a20160701xxx
+            pageType:"index", //必填项:本页面的定位；按照页面含义填写例如main||list||detail||download||share||page1||pageN,不支持点(.)、下划线(_)
+            pageName:"首页", //必填项:页面中文名 
+            project:"other", //选填项:如果是官网模块则是必填;按照模块内容，填写固定的对应值;官网微社区base;同人站doujin;赛事match;故事站story;文化站history;粉丝站fans;爆料站coming;论坛bbs;皮肤skin;默认other;
+            osact:0 //选填项:默认是0。osact=0表示非官网专题；osact=pc表示pc官网/pc官网专题；osact=m表示移动官网/移动官网专题；osact=ingame表示微社区/微社区专题
+        };
+        if(typeof(pgvMain)=='function')pgvMain();//千万不能忘记！
+    </script>
+        <script>
+            PTTSendClick('page','loadstart','开始加载');
+        </script>
     <% if (process.env.NODE_ENV === 'handover') { %>
         <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
             <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry; %>

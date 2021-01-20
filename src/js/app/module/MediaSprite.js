@@ -46,6 +46,7 @@ const MediaSprite = function (config) {
     let isInit = false;
     let _currentHandler = null;
 
+    // 重置视频
     let resizeVideo = function (config) {
         config = config || {};
         config.width = config.width || 750;
@@ -98,7 +99,7 @@ const MediaSprite = function (config) {
 
         if (domWrap) {
             domWrap.querySelector('.wrap') ? domWrap.querySelector('.wrap').appendChild(media) : domWrap.appendChild(media);
-            domWrap.style.zIndex = 0;
+            // domWrap.style.zIndex = 0;
         } else {
             document.body.appendChild(media);
         }
@@ -116,7 +117,7 @@ const MediaSprite = function (config) {
 
         if (!isInit) {
             // todo: 放大视频
-            resizeVideo();
+            // resizeVideo();
             isInit = true;
         }
 
@@ -128,12 +129,12 @@ const MediaSprite = function (config) {
                     this.pause();
 
                     if (domWrap) {
-                        domWrap.style.zIndex = 0;
+                        // domWrap.style.zIndex = 0;
                     } else {
-                        media.style.zIndex = 0;
+                        // media.style.zIndex = 0;
                     }
 
-                    media.style.visibility = 'hidden';
+                    // media.style.visibility = 'hidden';
                     media.removeEventListener('timeupdate', playHandler);
 
                     callback && callback(name);
@@ -175,14 +176,21 @@ const MediaSprite = function (config) {
         media.style.visibility = 'hidden';
     };
 
+    let skip = function (num = 0) {
+        media.currentTime = num;
+        media.pause();
+    };
+
     _init();
 
     return {
         gotoAndPlay: gotoAndPlay,
+        resizeVideo: resizeVideo,
         pause: pause,
         play: play,
         dom: media,
-        stop: stop
+        stop: stop,
+        skip: skip
     };
 };
 

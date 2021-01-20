@@ -118,13 +118,14 @@ module.exports = function () {
                             loader: 'url-loader',
                             options: {
                                 limit: 3000,
-                                name: '[name].[hash:8].[ext]'
+                                name: '[name].[ext]',
+                                esModule: false
                             }
                         }
                     ]
                 },
                 {
-                    test: /\.(mp3|mp4)$/,
+                    test: /\.(mp3|mp4|m4v)$/,
                     include: [
                         path.resolve(__dirname, 'src/media')
                     ],
@@ -133,7 +134,7 @@ module.exports = function () {
                             loader: 'url-loader',
                             options: {
                                 limit: 1,
-                                name: '[name].[hash:8].[ext]'
+                                name: '[name].[ext]'
                             }
                         }
                     ]
@@ -145,7 +146,7 @@ module.exports = function () {
         },
         plugins: [
             new CleanPlugin('dist'),
-            new ExtractTextPlugin('[name].[hash:8].css'),
+            new ExtractTextPlugin('[name].css'),
             new CopyWebpackPlugin(copyItem),
             new DefinePlugin({
                 'process.env': {
@@ -159,10 +160,10 @@ module.exports = function () {
                 inject: false,
                 hash: false,
                 minify: {
-                    removeComments: true, // 移除HTML中的注释
+                    removeComments: false, // 移除HTML中的注释
                     collapseWhitespace: false, // 删除空白符与换行符
-                    minifyCSS: true, // 压缩 HTML 中出现的 CSS 代码
-                    minifyJS: true // 压缩 HTML 中出现的 JS 代码
+                    minifyCSS: false, // 压缩 HTML 中出现的 CSS 代码
+                    minifyJS: false // 压缩 HTML 中出现的 JS 代码
                 }
             }),
             // new UglifyJSPlugin({

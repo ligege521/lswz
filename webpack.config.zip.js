@@ -53,7 +53,7 @@ module.exports = function () {
                     use: 'url-loader?limit=1000&name=ossweb-img/js/lib/[name].[ext]'
                 },
                 {
-                    test: /\.(png|jpg|gif|svg|mp3|mp4)$/,
+                    test: /\.(png|jpg|gif|svg|mp3|mp4|m4v)$/,
                     use: 'url-loader?limit=10000&name=ossweb-img/[name].[ext]'
                 },
                 {
