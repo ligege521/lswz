@@ -16,7 +16,6 @@ var initProject = function () {
     // }, {passive: false});
 
     document.body.addEventListener('touchmove', function (e) {
-        console.log('aaaa');
         const event = e || window.event;
         const className = event.target.getAttribute('class');
         if (/permit-scroll/.test(className) === false) {
@@ -229,11 +228,13 @@ var LoadViewController = function () {
                 startButton.hide();
                 _private.videoPageBtn();
             }
+            if (videoElement.currentTime >= 18) {
+                openButton.show();
+            }
             if (videoElement.currentTime >= 18.9) {
                 if (!videoElement.muted) {
                     videoElement.muted = true;
                 }
-                openButton.show();
                 videoElement.currentTime = 18.0;
             }
         };

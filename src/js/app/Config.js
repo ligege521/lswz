@@ -53,14 +53,6 @@ Config.pageImgs = {
             url: require('../../img/index/bg.png')
         },
         {
-            name: 'header_bg',
-            url: require('../../img/index/act_friend.png')
-        },
-        {
-            name: 'friend',
-            url: require('../../img/index/friend.png')
-        },
-        {
             name: 'gift_bag',
             url: require('../../img/index/gift_bag.png')
         },
@@ -113,12 +105,12 @@ Config.pageImgs = {
             url: require('../../img/index/prize_two.png')
         },
         {
-            name: 'prize_game_grey',
-            url: require('../../img/index/prize_game_grey.png')
+            name: 'prize_two',
+            url: require('../../img/index/prize_two.png')
         },
         {
-            name: 'btn_confirm',
-            url: require('../../img/frame/btn_confirm.png')
+            name: 'share_mess',
+            url: require('../../img/index/share_mess.png')
         },
         {
             name: 'frame_bg',
@@ -133,8 +125,8 @@ Config.pageImgs = {
             url: require('../../img/frame/help_com.png')
         },
         {
-            name: 'hide',
-            url: require('../../img/frame/hide.png')
+            name: 'list_title',
+            url: require('../../img/frame/list_title.png')
         },
         {
             name: 'money_888',
@@ -161,7 +153,7 @@ Config.pageImgs = {
             url: require('../../img/frame/hide.png')
         },
         {
-            name: 'hide',
+            name: 'mesk_bg',
             url: require('../../img/frame/mesk_bg.png')
         },
         {
@@ -169,8 +161,12 @@ Config.pageImgs = {
             url: require('../../img/frame/money_100.png')
         },
         {
-            name: 'money_888',
-            url: require('../../img/frame/money_888.png')
+            name: 'money_88',
+            url: require('../../img/frame/money_88.png')
+        },
+        {
+            name: 'not_found',
+            url: require('../../img/frame/not_found.png')
         },
         {
             name: 'new_user_reward',
@@ -185,24 +181,28 @@ Config.pageImgs = {
             url: require('../../img/frame/no_found_role.png')
         },
         {
-            name: 'header_bg',
-            url: require('../../img/frame/none.png')
-        },
-        {
             name: 'old_user',
             url: require('../../img/frame/old_user.png')
         },
         {
-            name: 'point_2000',
-            url: require('../../img/frame/point_2000.png')
+            name: 'opt_bg',
+            url: require('../../img/frame/opt_bg.png')
         },
         {
             name: 'roulette_bg',
             url: require('../../img/frame/roulette_bg.png')
         },
         {
+            name: 'roulette_btn',
+            url: require('../../img/frame/roulette_btn.png')
+        },
+        {
             name: 'relus_bg',
             url: require('../../img/frame/relus_bg.png')
+        },
+        {
+            name: 'satisfy',
+            url: require('../../img/frame/satisfy.png')
         },
         {
             name: 'header_bg',
@@ -210,7 +210,27 @@ Config.pageImgs = {
         },
         {
             name: 'point_8888',
-            url: require('../../img/frame/point_8888.png')
+            url: require('../../img/index/point_8888.png')
+        },
+        {
+            name: 'point_10000',
+            url: require('../../img/index/point_10000.png')
+        },
+        {
+            name: 'point_act_2000',
+            url: require('../../img/index/point_act_2000.png')
+        },
+        {
+            name: 'point_act_8888',
+            url: require('../../img/index/point_act_8888.png')
+        },
+        {
+            name: 'point_act_10000',
+            url: require('../../img/index/point_act_10000.png')
+        },
+        {
+            name: 'prize_15_grey',
+            url: require('../../img/index/prize_15_grey.png')
         },
         {
             name: 'roulette',
@@ -219,14 +239,6 @@ Config.pageImgs = {
         {
             name: 'roulette_bg',
             url: require('../../img/frame/roulette_bg.png')
-        },
-        {
-            name: 'unbound',
-            url: require('../../img/frame/unbound.png')
-        },
-        {
-            name: 'succeed',
-            url: require('../../img/frame/succeed.png')
         },
         {
             name: '0',

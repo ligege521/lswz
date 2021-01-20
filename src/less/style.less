@@ -15,7 +15,6 @@
 	.loop2(@n: 13, @kf-width: 7.5rem, @kf-height: 4.24rem);
 }
 
-
 html,
 body {
 	width: 100%;
@@ -142,12 +141,12 @@ body {
 			}
 		}
 		.start-btn{
-			width: 246px;
+			width: 264px;
 			height: 70px;
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			margin-left: -1.2rem;
+			margin-left: -1.33rem;
 			margin-top: 100px;
 			background-image: url('@{img}/button/start_btn.png');
 			background-size: 100% 100%;
@@ -159,13 +158,10 @@ body {
 }
 .m-video{
 	z-index: 3;
-	// width: 100%;
-	// height: 100%;
 	width: 7.5rem;
 	height: 16rem;
 	overflow: hidden;
 	transform: translate3d(-50%, -50%, 0);
-	// background-image: url('@{img}index/bg-2.png');
 	.btn-start{
 		// display: none;
 		z-index: 3;
@@ -188,8 +184,8 @@ body {
 		top: 2rem;
 		right: .3rem;
 		background-image: url("@{img}/button/skip.png");
-		animation: skipAni 1s both infinite;
-		animation-direction: alternate;
+		// animation: skipAni 1s both infinite;
+		// animation-direction: alternate;
 	}
 	.btn-open{
 		z-index: 3;
@@ -229,7 +225,7 @@ body {
 		height: 0.78rem;
 		background-image: url("@{img}/button/help_btn.png");
 		background-size: 100% 100%;
-		animation: breath 1.5s both infinite;
+		animation: breath 1.2s ease infinite;
 		animation-direction: alternate;
 	}
 	.video-box{
@@ -413,17 +409,46 @@ body {
 			margin: 0 auto;
 			margin-top: 20px;
 			.my-value-wrap{
-				width: 606px;
+				width: 596px;
 				height: 266px;
 				background-image: url("@{img}/index/my_value_bg.png");
 				margin: 0 auto;
-				margin-left: 0.2rem;
+				margin-left: 0.3rem;
+				.value-content{
+					width: 400px;
+					height: 120px;
+					margin: 0 auto;
+					margin-top: 0.4rem;
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					color: #430412;
+					.handover{
+						display: flex;
+						justify-content: center;
+						align-items: flex-end;
+						font-family: boldFont;
+						font-size: 0.3rem;
+						font-weight: 800;
+					}
+					.diff{
+						margin-top: 20px;
+						font-family: boldFont;
+						font-size: 0.3rem;
+						font-weight: 800;
+					}
+					.diff-value{
+						color: #fe5000;
+						font-size: 0.38rem;
+					}
+				}
 				.my-value{
 					width: 2.4rem;
 					height: 0.6rem;
 					top: 1.6rem;
 					left: 3.8rem;
 					line-height: 0.6rem;
+					margin-bottom: -0.05rem;
 					display: flex;
 					.value-img{
 						width: 0.4rem;
@@ -475,8 +500,14 @@ body {
 				overflow-y: hidden;
 				.scroll-box{
 					width: 800px;
-					height: 65px;
+					height: 705px;
 					overflow-y: hidden;
+					.more{
+						width: 19px;
+						height: 34px;
+						left: 3.9rem;
+						background-image: url("@{img}/index/more.png");
+					}
 					.item-help {
 						display: inline-block;
 						width: 65px;
@@ -578,20 +609,35 @@ body {
 			height: 8.95rem;
 			margin-top: 0.4rem;
 			background-size: 100% 100%;
-			font-size: 0.24rem !important;
+			font-size: 0.18rem !important;
 			color: #430412;
 			box-sizing: border-box;
 			padding-left: 10px;
+			line-height: 34px;
+			-webkit-user-select:none;
+			-moz-user-select:none;
+			-o-user-select:none;
+			user-select:none;
 			overflow: scroll;
+			.text-box{
+				width: 100%;
+				height: 14rem;
+				font-size: 0.18rem !important;
+				color: #430412;
+				box-sizing: border-box;
+				padding-left: 0.1rem;
+				line-height: 0.34rem;
+			}
 		}
 		h6{
-			font-size: 28px !important;
+			font-size: 0.20rem !important;
 			font-weight: 600 !important;
-			margin-left: -20px !important;
+			margin-left: -0.2rem !important;
+			margin-top: 20px;
 		}
 		.btn-hide-frame{
-			top: 0.4rem;
-			right: 0.45rem;
+			top: 0.5rem;
+			right: 0.5rem;
 			width: 1.05rem;
 			height: 0.95rem;
 			background-image: url("@{img}/button/btn_hide.png");
@@ -735,8 +781,8 @@ body {
 		transform: translate(-50%, -50%);
 		.panel{
 			position: relative;
-			width: 664px;
-			height: 677px;
+			width: 662px;
+			height: 674px;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
@@ -745,12 +791,12 @@ body {
 		}
 		.panel-face{
 			position: absolute;
-			width: 5.12rem;
-			height: 5.11rem;
+			width: 5.08rem;
+			height: 5.09rem;
 			background-image:url('@{img}/frame/roulette.png');
 			background-size: cover;
-			left: 0.75rem;
-			top: 0.66rem;
+			left: 0.74rem;
+			top: 0.65rem;
 		}
 		.panel-btn{
 			position: absolute;

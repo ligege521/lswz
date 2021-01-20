@@ -69,3 +69,15 @@
   border-image-slice: 10;
   box-sizing: border-box;
 }
+@font-face{
+	font-family: 'boldFont';
+	src: url('../font/FZLTTHJW.TTF');
+}
+@font-face{
+	font-family: 'bolderFont';
+	src: url('../font/FZLTZCHJW.TTF');
+}
+@font-face{
+	font-family: 'normalFont';
+	src: url('../font/FZLTHJW.TTF');
+}
