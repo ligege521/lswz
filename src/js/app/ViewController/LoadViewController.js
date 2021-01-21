@@ -198,6 +198,7 @@ var LoadViewController = function () {
     var _private = {};
 
     _private.pageEl = $('.m-loading');
+    // 是否第一次进入，第一次进入显示新手弹框
     _private.isFrist = true;
 
     _private.isInit = false;
@@ -218,7 +219,7 @@ var LoadViewController = function () {
         _private.gload.onloading = function (p) {
             let per = 100 - p;
             _private.processLineEl.css('marginLeft', -per + '%');
-            PTTSendClick('page', 'loadstart', '开始加载');
+            PTTSendClick('page', 'loads-tart', '开始加载');
         };
 
         _private.repea = function () {
@@ -226,9 +227,9 @@ var LoadViewController = function () {
                 $('.m-video').show();
                 _that.hide();
                 startButton.hide();
-                _private.videoPageBtn();
+                _private.videoPageController();
             }
-            if (videoElement.currentTime >= 18) {
+            if (videoElement.currentTime >= 17.5) {
                 openButton.show();
             }
             if (videoElement.currentTime >= 18.9) {
@@ -238,43 +239,62 @@ var LoadViewController = function () {
                 videoElement.currentTime = 18.0;
             }
         };
-         // 获取url地址参数判断用户是否第一次点击，分享链接需要带参数
+        // 页面加载完成
+        _private.gload.onload = function () {
+            PTTSendClick('page', 'load-end', '加载结束');
+            _private.hieprogress();
+            $('.m-loading').show();
+            startButton.show();
+            _private.isTapStart = false;
+            // 获取页面参数
+            _private.pageId = getQueryVariable('page') * 1;
+            startButton.click((event) => {
+                PTTSendClick('btn', 'start', '引入动画视频');
+                _private.isTapStart = true;
+                _private.hadlerPage();
+                PTTSendClick('btn', 'play-video', '播放视频');
+            });
+        };
+          // 获取url地址参数判断用户是否第一次点击，分享链接需要带参数
         _private.hadlerPage = function () {
-            let pageId = _private.pageId = getQueryVariable('page') * 1;
+            let pageId = _private.pageId;
+            _private.variablePageController();
+            _private.indexPageController();
+            _private.framePageController();
             if (pageId === 1) {
                 loadPage.hide();
-                visitorsPage.show();
                 videoPage.hide();
-                indexPage.hide();
-                PTTSendClick('btn', 'visitorsPage', '跳转客态页');
+                visitorsPage.show();
+                _private.audio[0].play();
+                _private.pageId = 0;
+                PTTSendClick('btn', 'visitors-page', '跳转客态页');
             } else if (pageId === 0) {
-                PTTSendClick('btn', 'indexPage', '进入主态页');
+                PTTSendClick('btn', 'index-page', '进入主态页');
                 visitorsPage.hide();
                 _that.video.play();
                 videoElement.addEventListener('timeupdate', _private.repea, false);
             }
         };
-        // 页面加载完成
-        _private.gload.onload = function () {
-            PTTSendClick('page', 'loadend', '加载结束');
-            _private.hieprogress();
-            $('.m-loading').show();
-            startButton.show();
-            _private.isTapStart = false;
-            startButton.click((event) => {
-                PTTSendClick('btn', 'start', '引入动画视频');
-                _private.isTapStart = true;
-                _private.hadlerPage();
-                PTTSendClick('btn', 'playvideo', '播放视频');
+
+        _private.variablePageController = function () {
+            replace(8888, '.friend-value');
+            helpFriendBtn.click(() => {
+                PTTSendClick('btn', 'help-friend-btn', '为好友助力');
+                frameWrap.show();
+                succeedFrame.show();
+            });
+            invitationBtn.click(() => {
+                PTTSendClick('btn', 'invitation-btn', '邀请助力');
+                indexPage.show();
+                visitorsPage.hide();
             });
         };
-
         // 视频页按钮
-        _private.videoPageBtn = function () {
+        _private.videoPageController = function () {
             skipButton.show();
              // 点击跳过button
             skipButton.click(() => {
-                PTTSendClick('btn', 'skip', '跳过视频');
+                PTTSendClick('btn', 'skip-btn', '跳过视频');
                 videoElement.removeEventListener('timeupdate', _private.repea, false);
                 videoElement.currentTime = 49;
                 skipButton.hide();
@@ -292,7 +312,7 @@ var LoadViewController = function () {
                 }, 4000);
             }
             openButton.click(() => {
-                PTTSendClick('btn', 'open', '召唤门神');
+                PTTSendClick('btn', 'open-btn', '召唤门神');
                 videoElement.removeEventListener('timeupdate', _private.repea, false);
                 if (videoElement.muted) {
                     videoElement.muted = false;
@@ -305,13 +325,13 @@ var LoadViewController = function () {
                 }
                 if (videoElement.currentTime >= 52 && !_private.audioIsplay) {
                     _private.audio[0].play();
+                    // 是否点击助力
                     _private.isTapHelp = false;
                     if (!_private.isTapHelp) {
                         setTimeout(() => {
                             helpButton.hide();
                             videoPage.hide();
                             indexPage.show();
-                            // 播放音频
                             if (_private.isFrist) {
                                 frameWrap.show();
                                 $('.frist-wrap').show();
@@ -322,7 +342,7 @@ var LoadViewController = function () {
                 }
             };
             helpButton.click((event) => {
-                PTTSendClick('btn', 'help', '助力好友');
+                PTTSendClick('btn', 'help-btn', '助力好友');
                 helpButton.hide();
                 videoPage.hide();
                 indexPage.show();
@@ -337,13 +357,14 @@ var LoadViewController = function () {
             videoElement.addEventListener('timeupdate', _private.showHelp, false);
         };
         // 主页按钮
-        _private.indexPage = function () {
+        _private.indexPageController = function () {
             // 回播
             backButton.click((event) => {
-                PTTSendClick('btn', 'back', '回看视频');
+                PTTSendClick('btn', 'back-btn', '回看视频');
                 helpButton.hide();
                 startButton.show();
                 indexPage.hide();
+                visitorsPage.hide();
                 loadPage.show();
                 // videoPage.show();
                 _private.audio[0].pause();
@@ -356,42 +377,42 @@ var LoadViewController = function () {
                 prizedOne.find('.prize-15').addClass('prize-15-grey');
                 prizedOne.find('.state').hide();
                 $('.reward-2000').show();
-                PTTSendClick('btn', 'prizedOne', '第一个任务');
+                PTTSendClick('btn', 'prized-one-btn', '第一个任务');
             });
             prizeTwo.click(function () {
                 frameWrap.show();
                 prizeTwo.find('.prize-game').addClass('prize-game-grey');
                 prizeTwo.find('.state').hide();
                 $('.reward-8888').show();
-                PTTSendClick('btn', 'prizeTwo', '第二个任务');
+                PTTSendClick('btn', 'prize-two-btn', '第二个任务');
             });
             prizeThree.click(function () {
                 frameWrap.show();
                 prizeThree.find('.prize-888').addClass('prize-888-grey');
                 prizeThree.find('.state').hide();
                 $('.roulette-wrap').show();
-                PTTSendClick('btn', 'prizeTwo', '第三个任务');
+                PTTSendClick('btn', 'prize-three-btn', '第三个任务');
             });
             shareButton.click(function () {
                 frameWrap.show();
                 $('.share').show();
-                PTTSendClick('btn', 'share', '邀请好友');
+                PTTSendClick('btn', 'share-btn', '邀请好友');
             });
             $('.share').click(function () {
                 frameWrap.hide();
                 $('.share').hide();
-                PTTSendClick('btn', 'share', '取消邀请好友');
+                PTTSendClick('btn', 'share-mod', '取消邀请好友');
             });
             // 领取，下载等按钮，
             $('.btn-hide').click((event) => {
                 frameWrap.hide();
                 $(event.srcElement).parent().hide();
-                PTTSendClick('btn', 'hideFrame', '隐藏弹框');
+                PTTSendClick('btn', 'hide-frame-btn', '隐藏弹框');
             });
             $('.btn-checkDet').click(() => {
                 frameWrap.show();
                 $('.friend-wrap').show();
-                PTTSendClick('btn', 'friendList', '查看好友助力列表');
+                PTTSendClick('btn', 'friend-list', '查看好友助力列表');
             });
             // 设置任务进度百分比
             setProgress();
@@ -424,58 +445,44 @@ var LoadViewController = function () {
             };
             // 统一使用隐藏函数
             hidFrame.on('click', (event) => {
-                PTTSendClick('btn', `hideFrame`, '隐藏弹框');
+                PTTSendClick('btn', `hide-frame`, '隐藏弹框');
                 frameWrap.hide();
                 $(event.srcElement).parent().hide();
             });
             // 显示规则
             relusButton.click((event) => {
-                PTTSendClick('btn', 'showRelus', '显示规则弹框');
+                PTTSendClick('btn', 'show-relus', '显示规则弹框');
                 frameWrap.show();
                 $('.relus-wrap').show();
             });
         };
-        _private.indexPage();
         // 弹框层
-        _private.framePage = function () {
+        _private.framePageController = function () {
             fristFrame.find('.receive').click(() => {
-                PTTSendClick('btn', 'frist-frame-receive', '首次进入领取按钮');
+                PTTSendClick('btn', 'frist-frame-receive-btn', '首次进入领取按钮');
                 fristFrame.hide();
                 sectionFrame.show();
             });
             sectionFrame.find('.confirm').click(() => {
-                PTTSendClick('btn', 'section-confirm', '选区确认');
+                PTTSendClick('btn', 'section-confirm-btn', '选区确认');
                 sectionFrame.hide();
                 notFoundFrame.show();
             });
             notFoundFrame.find('.reset').click(() => {
-                PTTSendClick('btn', 'reset', '重新选择选区');
+                PTTSendClick('btn', 'reset-btn', '重新选择选区');
                 frameWrap.show();
                 sectionFrame.show();
                 notFoundFrame.hide();
             });
             olduserFrame.find('.receive').click(() => {
-                PTTSendClick('btn', 'receive', '老用户领取奖励');
+                PTTSendClick('btn', 'receive-btn', '老用户领取奖励');
                 olduserFrame.hide();
                 frameWrap.hide();
             });
         };
-        _private.framePage();
 
-        _private.visivorsPage = function () {
-            replace(8888, '.friend-value');
-            helpFriendBtn.click(() => {
-                PTTSendClick('btn', 'help-friend', '为好友助力');
-                frameWrap.show();
-                succeedFrame.show();
-            });
-            invitationBtn.click(() => {
-                PTTSendClick('btn', 'invitation', '邀请助力');
-                indexPage.show();
-                visitorsPage.hide();
-            });
-        };
-        _private.visivorsPage();
+        // _private.visivorsPage = function () {
+        // };
 
         _private.gload.onfail = function (msg) {
             console.log(msg);

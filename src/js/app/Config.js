@@ -29,10 +29,6 @@ Config.Preload = Preload;
 Config.pageImgs = {
     imgs: [
         {
-            name: 'bg',
-            url: require('../../img/loading/bg.png')
-        },
-        {
             name: 'loading',
             url: require('../../img/loading/loading.png')
         },
@@ -165,16 +161,20 @@ Config.pageImgs = {
             url: require('../../img/frame/money_88.png')
         },
         {
-            name: 'not_found',
-            url: require('../../img/frame/not_found.png')
-        },
-        {
             name: 'new_user_reward',
             url: require('../../img/frame/new_user_reward.png')
         },
         {
             name: 'new_user_tip',
             url: require('../../img/frame/new_user_tip.png')
+        },
+        {
+            name: 'none',
+            url: require('../../img/frame/none.png')
+        },
+        {
+            name: 'point_2000',
+            url: require('../../img/frame/point_2000.png')
         },
         {
             name: 'no_found_role',
@@ -199,10 +199,6 @@ Config.pageImgs = {
         {
             name: 'relus_bg',
             url: require('../../img/frame/relus_bg.png')
-        },
-        {
-            name: 'satisfy',
-            url: require('../../img/frame/satisfy.png')
         },
         {
             name: 'header_bg',

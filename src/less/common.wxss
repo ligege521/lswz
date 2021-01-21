@@ -71,13 +71,13 @@
 }
 @font-face{
 	font-family: 'boldFont';
-	src: url('../font/FZLTTHJW.TTF');
+	src: url('../kf/');
 }
 @font-face{
 	font-family: 'bolderFont';
-	src: url('../font/FZLTZCHJW.TTF');
+	src: url('../kf/');
 }
 @font-face{
 	font-family: 'normalFont';
-	src: url('../font/FZLTHJW.TTF');
+	src: url('../kf/FZLTHJW.TTF');
 }
