@@ -345,7 +345,6 @@ body {
 .m-vertical .m-wrap {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 }
 .m-horizontal {
   display: none;
@@ -512,8 +511,8 @@ body {
 .m-video .btn-help {
   position: relative;
   z-index: 3;
-  left: 72%;
-  top: 53%;
+  left: 5rem;
+  top: 6.7rem;
   width: 0.89rem;
   height: 0.98rem;
   background-image: url("../img//button/help_text.png");
@@ -793,17 +792,24 @@ body {
   overflow: scroll;
 }
 .m-index .container .bottom-box .list-help {
-  width: 3.2rem;
+  width: 3rem;
   height: 65px;
   margin-top: 0.5rem;
   margin-left: 0.5rem;
-  overflow: scroll;
   overflow-y: hidden;
+  overflow-x: scroll;
 }
 .m-index .container .bottom-box .list-help .scroll-box {
   width: 800px;
-  height: 705px;
+  height: 100%;
   overflow-y: hidden;
+  overflow-x: scroll;
+}
+.m-index .container .bottom-box .list-help .scroll-box .list-box {
+  width: 164px;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
 .m-index .container .bottom-box .list-help .scroll-box .more {
   width: 19px;
@@ -979,12 +985,6 @@ body {
   height: 0.32rem;
   margin: 0 auto;
   background-image: url('../img//frame/no_found_role.png');
-}
-.m-frame .qualified-wrap .content {
-  width: 4.77rem;
-  height: 1.86rem;
-  margin: 0 auto;
-  background-image: url('../img//frame/qualified.png');
 }
 .m-frame .tip-name-wrap .tip-text {
   width: 100%;

@@ -24,7 +24,8 @@ if (fs.existsSync('src/img/kf')) {
 module.exports = function () {
     return {
         entry: {
-            main: './src/js/index.js'
+            main: './src/js/index.js',
+            visitors: './src/js/visitors.js'
         },
         module: {
             rules: [
@@ -97,6 +98,19 @@ module.exports = function () {
             new HtmlWebpackPlugin({
                 filename: './index.html',
                 template: 'index.ejs',
+                // template: 'ejs-render-loader!index.ejs',
+                inject: false,
+                hash: false,
+                minify: {
+                    removeComments: true, // 移除HTML中的注释
+                    collapseWhitespace: false, // 删除空白符与换行符
+                    minifyCSS: true, // 压缩 HTML 中出现的 CSS 代码
+                    minifyJS: true // 压缩 HTML 中出现的 JS 代码
+                }
+            }),
+            new HtmlWebpackPlugin({
+                filename: './visitors.html',
+                template: 'visitors.ejs',
                 // template: 'ejs-render-loader!index.ejs',
                 inject: false,
                 hash: false,

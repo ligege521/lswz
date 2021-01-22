@@ -45,67 +45,111 @@ Config.pageImgs = {
             url: require('../../img/loading/progres.png')
         },
         {
-            name: 'header_bg',
-            url: require('../../img/index/bg.png')
-        },
-        {
-            name: 'gift_bag',
-            url: require('../../img/index/gift_bag.png')
-        },
-        {
-            name: 'list_bg',
-            url: require('../../img/index/list_bg.png')
-        },
-        {
-            name: 'my_value_bg',
-            url: require('../../img/index/my_value_bg.png')
-        },
-        {
-            name: 'not_receive',
-            url: require('../../img/index/not_receive.png')
+            name: 'progres',
+            url: require('../../img/loading/progress_header.png')
         },
         {
             name: 'header_bg',
             url: require('../../img/index/act_friend.png')
         },
         {
+            name: 'gift_bag',
+            url: require('../../img/index/back.png')
+        },
+        {
+            name: 'list_bg',
+            url: require('../../img/index/bg.png')
+        },
+        {
+            name: 'my_value_bg',
+            url: require('../../img/index/friend.png')
+        },
+        {
+            name: 'not_receive',
+            url: require('../../img/index/gift_bag.png')
+        },
+        {
+            name: 'header_bg',
+            url: require('../../img/index/list_bg.png')
+        },
+        {
             name: 'prize_15',
-            url: require('../../img/index/prize_15.png')
+            url: require('../../img/index/more.png')
         },
         {
             name: 'prize_888_grey',
-            url: require('../../img/index/prize_888_grey.png')
+            url: require('../../img/index/my_value_bg.png')
         },
         {
             name: 'prize_888',
-            url: require('../../img/index/prize_888.png')
+            url: require('../../img/index/not_receive.png')
         },
         {
             name: 'prize_game_grey',
-            url: require('../../img/index/prize_game_grey.png')
+            url: require('../../img/index/point_2000.png')
         },
         {
             name: 'prize_game',
-            url: require('../../img/index/prize_game.png')
+            url: require('../../img/index/point_8888.png')
         },
         {
             name: 'prize_one',
-            url: require('../../img/index/prize_one.png')
+            url: require('../../img/index/point_10000.png')
         },
         {
             name: 'prize_three',
-            url: require('../../img/index/prize_three.png')
+            url: require('../../img/index/point_act_2000.png')
         },
         {
             name: 'prize_two',
-            url: require('../../img/index/prize_two.png')
+            url: require('../../img/index/point_act_8888.png')
         },
         {
             name: 'prize_two',
-            url: require('../../img/index/prize_two.png')
+            url: require('../../img/index/point_act_10000.png')
         },
         {
             name: 'share_mess',
+            url: require('../../img/index/prize_15_grey.png')
+        },
+        {
+            name: 'prize_game_grey',
+            url: require('../../img/index/prize_888_grey.png')
+        },
+        {
+            name: 'prize_game',
+            url: require('../../img/index/prize_888.png')
+        },
+        {
+            name: 'prize_one',
+            url: require('../../img/index/prize_game_grey.png')
+        },
+        {
+            name: 'prize_three',
+            url: require('../../img/index/prize_game.png')
+        },
+        {
+            name: 'prize_two',
+            url: require('../../img/index/prize_one.png')
+        },
+        {
+            name: 'prize_two',
+            url: require('../../img/index/prize_three.png')
+        },
+        {
+            name: 'share_mess',
+            url: require('../../img/index/prize_two.png')
+        },
+        {
+            name: 'prize_three',
+            url: require('../../img/index/relus.png')
+        },
+        {
+            name: 'prize_two',
+            url: require('../../img/index/share_btn.png')
+        },
+        {
+            name: 'prize_two',
             url: require('../../img/index/share_mess.png')
         },
         {
@@ -161,6 +205,10 @@ Config.pageImgs = {
             url: require('../../img/frame/money_88.png')
         },
         {
+            name: 'money_88',
+            url: require('../../img/frame/money_888.png')
+        },
+        {
             name: 'new_user_reward',
             url: require('../../img/frame/new_user_reward.png')
         },
@@ -201,10 +249,6 @@ Config.pageImgs = {
             url: require('../../img/frame/relus_bg.png')
         },
         {
-            name: 'header_bg',
-            url: require('../../img/frame/qualified.png')
-        },
-        {
             name: 'point_8888',
             url: require('../../img/index/point_8888.png')
         },
@@ -231,6 +275,10 @@ Config.pageImgs = {
         {
             name: 'roulette',
             url: require('../../img/frame/roulette.png')
+        },
+        {
+            name: 'roulette',
+            url: require('../../img/frame/succeed.png')
         },
         {
             name: 'roulette_bg',

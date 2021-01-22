@@ -15,25 +15,21 @@ import '../js/lib/mmd-plugin.min.1.0.2';
 import '../js/lib/mmd.videoplayer.min.1.0.1';
 
 // 引入的包根据实际情况而定
-import LoadViewController from './app/ViewController/LoadViewController';
+import IndexViewController from './app/ViewController/IndexViewController';
 
 // 页面级对象池
 var pagePool = {
-    loadView: null,
-    videoView: null,
-    indexView: null,
-    frameView: null
+    indexView: null
 };
 
 var init = function () {
     // load页面
-    var loadPageBack = function () {
-        pagePool.loadView = pagePool.loadView || new LoadViewController();
-        var loadView = pagePool.loadView;
-        loadView.load();
-        // loadView.onhide = videoPageBack;
+    var indexPageBack = function () {
+        pagePool.indexView = pagePool.indexView || new IndexViewController();
+        var indexView = pagePool.indexView;
+        indexView.load();
     };
-    loadPageBack();
+    indexPageBack();
 
     // 测试时
 };

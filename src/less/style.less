@@ -33,7 +33,7 @@ body {
 	.m-wrap {
 		width: 100vw;
 		height: 100vh;
-		overflow: hidden;
+		// overflow: hidden;
 		// background-image: url('@{img}index/1.png');
 	}
 }
@@ -214,8 +214,8 @@ body {
 	.btn-help{
 		position: relative;
 		z-index: 3;
-		left: 72%;
-		top: 53%;
+		left: 5rem;
+		top: 6.7rem;
 		width: 0.89rem;
 		height: 0.98rem;
 		background-image: url("@{img}/button/help_text.png");
@@ -509,16 +509,23 @@ body {
 			background-image: url("@{img}/index/list_bg.png");
 			overflow: scroll;
 			.list-help {
-				width: 3.2rem;
+				width: 3rem;
 				height: 65px;
 				margin-top: 0.5rem;
 				margin-left: 0.5rem;
-				overflow: scroll;
 				overflow-y: hidden;
+				overflow-x: scroll;
 				.scroll-box{
 					width: 800px;
-					height: 705px;
+					height: 100%;
 					overflow-y: hidden;
+					overflow-x: scroll;
+					.list-box{
+						width: 164px;
+						height: 100%;
+						overflow-y: scroll;
+						overflow-x: scroll;
+					}
 					.more{
 						width: 19px;
 						height: 34px;
@@ -721,14 +728,6 @@ body {
 			height: 0.32rem;
 			margin: 0 auto;
 			background-image: url('@{img}/frame/no_found_role.png');
-		}
-	}
-	.qualified-wrap{
-		.content{
-			width: 4.77rem;
-			height: 1.86rem;
-			margin: 0 auto;
-			background-image: url('@{img}/frame/qualified.png');
 		}
 	}
 
@@ -943,6 +942,7 @@ body {
 			margin-top: 1.8rem;
 			background-image: url("@{img}/frame/list_title.png");
 		}
+		.list-box{}
 		.list-container{
 			width: 400px;
 			height: 400px;

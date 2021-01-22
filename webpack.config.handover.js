@@ -166,6 +166,18 @@ module.exports = function () {
                     minifyJS: false // 压缩 HTML 中出现的 JS 代码
                 }
             }),
+            new HtmlWebpackPlugin({
+                filename: '../visitors.html',
+                template: 'visitors.ejs',
+                inject: false,
+                hash: false,
+                minify: {
+                    removeComments: false, // 移除HTML中的注释
+                    collapseWhitespace: false, // 删除空白符与换行符
+                    minifyCSS: false, // 压缩 HTML 中出现的 CSS 代码
+                    minifyJS: false // 压缩 HTML 中出现的 JS 代码
+                }
+            }),
             // new UglifyJSPlugin({
             //     uglifyOptions: {
             //         compress: {

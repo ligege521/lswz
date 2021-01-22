@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <![endif]-->
+    <title>乱世王者-门神现金裂变</title>
+    <!-- 页面设计：青木文化 | 页面制作：青木文化 | 创建：2021-01-19 -->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="robots" content="all">
+    <meta name="author" content="Tencent-CP">
+    <meta name="Copyright" content="Tencent">
+    <meta name="Keywords" content="乱世王者, 门神, 现金, 裂变, 年兽, 打年兽">
+    <meta id="share-description" itemprop="description" name="Description" content="乱世王者-门神现金裂变">
+    <meta id="share-name" itemprop="name" content="">
+    <meta id="share-image" itemprop="image" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <script src="<%=require ('./src/js/lib/mmd-plugin.min.1.0.2.js')%>"></script>
+    <script src="<%=require ('./src/js/lib/mmd.videoplayer.min.1.0.1.js')%>"></script>
+    <script src="<%=require ('./src/js/lib/vconsole.min.js')%>"></script>
+    <!-- rem布局初始化设置start -->
+    <script type="text/javascript">
+        <%= require('raw-loader!./src/js/app/rem.js') %>
+    </script>
+    <!-- rem布局初始化设置end -->
+
+    <% if (process.env.NODE_ENV === 'handover') { %>
+        <% for (var css in htmlWebpackPlugin.files.css) { %>
+            <% var cssFile = htmlWebpackPlugin.files.css[css] %>
+            <link href="<%= cssFile %>" rel="stylesheet">
+        <% } %>
+    <% } else { %>
+        <% for (var css in htmlWebpackPlugin.files.css) { %>
+            <% var cssFile = htmlWebpackPlugin.files.css[css].substr(htmlWebpackPlugin.files.publicPath.length); %>
+            <link href="<%= cssFile %>" rel="stylesheet">
+        <% } %>
+    <% } %>
+
+    <!-- 授权加代码统计系统 -->
+    <!-- <script id="__ga" type="text/javascript" src="https://ga.treedom.cn/ga.js?v=0.3.4&pid=9999"></script> -->
+</head>
+<body>
+    <div class="m-main-wrap absf">
+        
+        <!-- 竖屏页 -->
+        <div class="m-vertical absf">
+            <div class="m-wrap sizcover abcter">
+                <!-- 业务逻辑代码 stat -->
+
+                <div class="m-loading"></div>
+                <div class="m-audio hide" id="m-audio">
+                    <audio id='audio' src=" <%= require('./src/media/audio.mp3') %>" loop></audio>
+                </div>
+                <!-- 客态页模块 -->
+                <div class="m-visitors sizcover abcter">
+                    <div class="btn-relus sizcover abcter"></div>
+                    <div class="visitors-main abcter">
+                        <div class="top-content">
+                            <div class="top-title sizcover"></div>
+                            <div class="friend-value sizcover"></div>
+                            <div class="title-text sizcover"></div>
+                            <div class="button-box">
+                                <div class="help_friend-btn sizcover"></div>
+                                <div class="invitation-btn sizcover"></div>
+                            </div>
+                            <div class="invitation-tip sizcover"></div>
+                        </div>
+                        <div class="friend-list sizcover permit-scroll">
+                            <div class="list-container permit-scroll">
+                                <div class="friend-item permit-scroll">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">440</div>
+                                </div>
+                                <div class="friend-item permit-scroll">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">420</div>
+                                </div>
+                                <div class="friend-item permit-scroll">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">410</div>
+                                </div>
+                                <div class="friend-item permit-scroll">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">400</div>
+                                </div>
+                                <div class="friend-item permit-scroll">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">390</div>
+                                </div>
+                                <div class="friend-item permit-scroll">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">380</div>
+                                </div>
+                                <div class="friend-item permit-scroll">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">370</div>
+                                </div>
+                                <div class="friend-item permit-scroll">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">360</div>
+                                </div>
+                                <div class="friend-item permit-scroll">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">350</div>
+                                </div>
+                                <div class="friend-item permit-scroll">
+                                    <div class="avatar sizcover"></div>
+                                    <div class="name">呢称xxxx</div>
+                                    <div class="value">340</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- 弹框模块 -->
+                <div class="m-frame absf sizcover hide">
+                    <!-- 规则弹框 -->
+                    <div class="relus-wrap absf sizcover hide permit-scroll">
+                        <div class="relus-text permit-scroll">
+                            <div class="text-box permit-scroll">
+                                <h6 class="permit-scroll">【活动范围】</h6>
+                                <text class="text-content permit-scroll" selectable="true">
+                                    本活动规则针对用户在本H5内参与下载《乱世王者》游戏/分享H5达到规定助力值以获取奖励活动；
+                                </text>
+                                <h6 class="permit-scroll">【活动时间】</h6>
+                                <text class="text-content permit-scroll" selectable="true">
+                                    2021年X月X日至2021年X月X日
+                                </text>
+                                <h6>【参与方法】</h6>
+                                <text class="text-content permit-scroll" selectable="true">
+                                    （1）本活动限微信、QQ用户参加；活动奖励每日名额有限，先到先得，如用户达到规定助力值，即可获得对应奖励。如当日奖励名额发放完毕，用户可在次日（活动期限内）重新返回本H5进行奖励领取/抽奖；<br>
+                                    （2）进入本H5并观看完引入动画后，用户将获得初始助力值888。点击“助力门神”按钮，将提示用户获得游戏礼包及现金红包。《乱世王者》新用户可下载并登录游戏，再回到本H5领取红包及游戏礼包奖励；老用户可进行游戏登录，领取游戏内大礼包奖励，并获得100-200助力值。用户也可直接进入活动页面，用户在奖励活动时间内可发起活动以获取奖励，若奖励活动结束则无法获取；<br>
+                                    （3）用户进入活动页面后，可查看自身当前助力值、获取对应奖励的助力值差值、对应奖励、好友助力榜。助力值分为三个档位，分别为2000、8888、10000。用户达到2000，可领取现金红包15元（QQ用户获得等值Q币）；用户达到8888，可获得《乱世王者》门神君主形象（30天）、橙色将魂*3，寻龙令*8，高级行军加速*8；用户达到10000，可获得现金红包28元、现金红包88元、现金红包888元、门神君主形象（60天）抽奖机会。用户可以通过邀请好友助力提高助力值（随机生成10-15），若好友通过点击用户链接并进行助力及游戏下载，则可生成200-400的更高助力值；<br>
+                                    （4）用户参与活动后可邀请好友助力时间为XXX，超出时间后好友将无法助力；<br>
+                                    （5）每位用户最多可以帮助1位好友助力；<br>
+                                    （6）微信用户获得现金红包可在“微信钱包”查看；QQ用户红包将以等值Q币形式获得。<br>
+                                </text>
+                                
+                                <h6>【注意事项】</h6>
+                                <text class="text-content permit-scroll" selectable="true">
+                                    （1）用户在奖励活动时间内可发起活动，若奖励活动时间结束则无法发起；<br>
+                                    （2）参与活动过程中，需要授权微信/QQ，若未授权，可能会出现无法分享或参与活动的情况；<br>
+                                    （3）用户参与所获得的奖励存在随机性及时效性，不确保所有用户均能获得奖励，实际奖励金额以页面实时展示结果为准。<br>
+                                </text>
+                            </div>
+                        </div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                    <div class="succeed-wrap frame sizcover abcter siz hide">
+                        <div class="content abcter sizcover">
+                            <div class="message-1 text">
+                                已为好友助力<text class="value">xxx</text>值！
+                            </div>
+                            <div class="message-2 text">
+                                下载游戏, 可为好友获得更高助力值哦~
+                            </div>
+                        </div>
+                        <div class="download button abcter sizcover"></div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+                </div>
+
+                <!-- 业务逻辑代码 end -->
+            </div>
+        </div>
+        
+        <!-- 横屏页 -->
+        <div class="m-horizontal absf">
+            <div class="m-wrap sizcover abcter">
+                <!-- 同上 -->
+            </div>
+        </div>
+
+        <!-- loading小动画 -->
+        <div class="icon-loading absf hide">
+            <div class="inner abcter">
+                <svg class="abcter" version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px" y="0px" width="40px" height="40px" viewBox="0 0 50 50">
+                    <path fill="#000"
+                        d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+                        <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25"
+                            to="360 25 25" dur="0.6s" repeatCount="indefinite" />
+                    </path>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- 微信分享JSDK 需要时打开 -->
+    <!-- <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> -->
+
+    <!--  正式上线可替换此zepto（腾讯CDN） -->
+    <!-- <script src="//cdnjs.gtimg.com/cdnjs/libs/zepto/1.0rc1/zepto.min.js"></script> -->
+
+    <!-- 本地zepto -->
+    <script src="<%= require('./src/js/lib/zepto.min.1.2.js') %>"></script>
+    <script src="<%= require('./src/js/lib/loteryround.min.js')%>"></script>
+    <script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+    <script src="https://ossweb-img.qq.com/images/spiderMediaData/slg_new/mediaURLData_https.js"></script>
+    <script src="//ossweb-img.qq.com/images/js/TGMobileShare/TGMobileShare.min.js"></script>
+    <script>
+        TGMobileShare({
+        shareTitle:'乱世王者', //不设置或设置为空时，页面有title，则调取title
+        shareDesc:'', //不设置或设置为空时，页面有Description，则调取Description
+        shareImgUrl:'game.gtimg.cn/images/tgideas/act/a20151127tgmsdemo/share.jpg', //分享图片尺寸200*200，且填写绝对路径
+        shareLink:'game.gtimg.cn/images/slg/cp/a20210119ms/index.html', //分享链接要跟当前页面同域名(手Q分享有这个要求) ,不设置或设置为空时，默认调取当前URL
+        actName:'a20210119ms' //点击流命名，用于统计分享量，专题一般采用目录名称如a20151029demo
+        });
+    </script>
+    <script>
+        //此段代码不能放到外链JS中，
+        var setSite={ //设置网站属性 
+            siteType:"a20210119ms", //必填项:"os"代表是官网，如果不是，则填写actName例如a20160701xxx
+            pageType:"visitors", //必填项:本页面的定位；按照页面含义填写例如main||list||detail||download||share||page1||pageN,不支持点(.)、下划线(_)
+            pageName:"客态页", //必填项:页面中文名 
+            project:"other", //选填项:如果是官网模块则是必填;按照模块内容，填写固定的对应值;官网微社区base;同人站doujin;赛事match;故事站story;文化站history;粉丝站fans;爆料站coming;论坛bbs;皮肤skin;默认other;
+            osact:0 //选填项:默认是0。osact=0表示非官网专题；osact=pc表示pc官网/pc官网专题；osact=m表示移动官网/移动官网专题；osact=ingame表示微社区/微社区专题
+        };
+        if(typeof(pgvMain)=='function')pgvMain();//千万不能忘记！
+    </script>
+    <% if (process.env.NODE_ENV === 'handover') { %>
+        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+            <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry; %>
+            <script type="text/javascript" src="<%= jsFile %>"></script>
+        <% } %>
+    <% } else { %>
+        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+            <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry.substr(htmlWebpackPlugin.files.publicPath.length); %>
+            <script type="text/javascript" src="<%= jsFile %>"></script>
+        <% } %>
+    <% } %>
+
+    </body>
+</html>

@@ -191,7 +191,7 @@ const invitationBtn = $('.invitation-btn');
 
 const rouletteFrame = $('.roulette-wrap');
 // 加载页对象
-var LoadViewController = function () {
+var IndexViewController = function () {
     // 公共变量
     var _that = this;
     // 私有变量
@@ -537,4 +537,4 @@ var LoadViewController = function () {
     _private.init();
 };
 
-module.exports = LoadViewController;
+module.exports = IndexViewController;
