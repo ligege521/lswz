@@ -392,7 +392,7 @@ body {
 .m-loading .loading-bg {
   width: 100%;
   height: 100%;
-  background-image: url('../img/index/bg.png');
+  background-image: url('../img/index/index_bg.png');
   background-size: cover;
 }
 .m-loading .loading-bg .loading-ani {
@@ -419,6 +419,7 @@ body {
   width: 100%;
   height: 100%;
   margin-left: -100%;
+  transition: all 200ms linear;
 }
 .m-loading .loading-bg .move .loading_progress {
   width: 5.56rem;
@@ -545,7 +546,7 @@ body {
   z-index: 2;
   width: 750px;
   height: 1624px;
-  background-image: url("../img//index/bg.png");
+  background-image: url("../img//index/index_bg.png");
 }
 .m-index .container {
   width: 646px;
@@ -588,12 +589,6 @@ body {
   margin-left: 0.5rem;
   height: 0.6rem;
 }
-.m-index .container .reward-box .prize-wrap .prize .state-0 {
-  background-image: url("../img//index/not_receive.png");
-}
-.m-index .container .reward-box .prize-wrap .prize .state-1 {
-  background-image: url("../img//index/receive.png");
-}
 .m-index .container .reward-box .prize-wrap .prize-one {
   background-image: url("../img//index/prize_one.png");
 }
@@ -603,37 +598,75 @@ body {
 .m-index .container .reward-box .prize-wrap .prize-three {
   background-image: url("../img//index/prize_three.png");
 }
-.m-index .container .reward-box .prize-wrap .prize-15 {
+.m-index .container .reward-box .prize-wrap .prize-static .state {
+  width: 0.99rem;
+  margin-top: 0.05rem;
+  margin-left: 0.5rem;
+  height: 0.6rem;
+  background-image: url("../img//index/not_receive.png");
+}
+.m-index .container .reward-box .prize-wrap .prize-static .prize-15 {
   width: 113px;
   height: 130px;
   top: 1rem;
   background-image: url("../img//index/prize_15.png");
 }
-.m-index .container .reward-box .prize-wrap .prize-15-grey {
-  width: 143px;
-  height: 130px;
-  top: 1rem;
-  background-image: url("../img//index/prize_15_grey.png");
-}
-.m-index .container .reward-box .prize-wrap .prize-game {
+.m-index .container .reward-box .prize-wrap .prize-static .prize-game {
   width: 163px;
   height: 143px;
   top: 1rem;
   background-image: url("../img//index/prize_game.png");
 }
-.m-index .container .reward-box .prize-wrap .prize-game-grey {
-  width: 179px;
-  height: 120px;
-  top: 1rem;
-  background-image: url("../img//index/prize_game_grey.png");
-}
-.m-index .container .reward-box .prize-wrap .prize-888 {
+.m-index .container .reward-box .prize-wrap .prize-static .prize-888 {
   width: 163px;
   height: 143px;
   top: 1rem;
   background-image: url("../img//index/prize_888.png");
 }
-.m-index .container .reward-box .prize-wrap .prize-888-grey {
+.m-index .container .reward-box .prize-wrap .prize-qualified .state {
+  width: 0.99rem;
+  margin-top: 0.05rem;
+  margin-left: 0.5rem;
+  height: 0.6rem;
+  background-image: url("../img//index/receive.png");
+}
+.m-index .container .reward-box .prize-wrap .prize-qualified .prize-15 {
+  width: 113px;
+  height: 130px;
+  top: 1rem;
+  background-image: url("../img//index/prize_15.png");
+}
+.m-index .container .reward-box .prize-wrap .prize-qualified .prize-game {
+  width: 163px;
+  height: 143px;
+  top: 1rem;
+  background-image: url("../img//index/prize_game.png");
+}
+.m-index .container .reward-box .prize-wrap .prize-qualified .prize-888 {
+  width: 163px;
+  height: 143px;
+  top: 1rem;
+  background-image: url("../img//index/prize_888.png");
+}
+.m-index .container .reward-box .prize-wrap .prize-already .state {
+  width: 0.99rem;
+  margin-top: 0.05rem;
+  margin-left: 0.5rem;
+  height: 0.6rem;
+}
+.m-index .container .reward-box .prize-wrap .prize-already .prize-15 {
+  width: 143px;
+  height: 130px;
+  top: 1rem;
+  background-image: url("../img//index/prize_15_grey.png");
+}
+.m-index .container .reward-box .prize-wrap .prize-already .prize-game {
+  width: 179px;
+  height: 120px;
+  top: 1rem;
+  background-image: url("../img//index/prize_game_grey.png");
+}
+.m-index .container .reward-box .prize-wrap .prize-already .prize-888 {
   width: 165px;
   height: 139px;
   top: 1rem;
@@ -665,33 +698,33 @@ body {
 }
 .m-index .container .reward-box .progress_wrap .point-box .point-2000 {
   left: 0.2rem;
-  background-image: url("../img//index/point_2000.png");
+  background-image: url("../img//index/point_icon_2000.png");
 }
 .m-index .container .reward-box .progress_wrap .point-box .point-8888 {
   left: 2.5rem;
-  background-image: url("../img//index/point_8888.png");
+  background-image: url("../img//index/point_icon_8888.png");
 }
 .m-index .container .reward-box .progress_wrap .point-box .point-10000 {
   left: 4.6rem;
-  background-image: url("../img//index/point_10000.png");
+  background-image: url("../img//index/point_icon_10000.png");
 }
 .m-index .container .reward-box .progress_wrap .point-box .point-2000-act {
   left: 0.2rem;
   width: 102px;
   height: 104px;
-  background-image: url("../img//index/point_act_2000.png");
+  background-image: url("../img//index/point_act_icon_2000.png");
 }
 .m-index .container .reward-box .progress_wrap .point-box .point-8888-act {
   left: 2.4rem;
-  width: 102px;
-  height: 104px;
-  background-image: url("../img//index/point_act_8888.png");
+  width: 85px;
+  height: 84px;
+  background-image: url("../img//index/point_act_icon_8888.png");
 }
 .m-index .container .reward-box .progress_wrap .point-box .point-10000-act {
   left: 4.6rem;
-  width: 102px;
-  height: 104px;
-  background-image: url("../img//index/point_act_10000.png");
+  width: 100px;
+  height: 100px;
+  background-image: url("../img//index/point_act_icon_10000.png");
 }
 .m-index .container .reward-box .progress_wrap .progress-value {
   z-index: -1;
@@ -777,10 +810,11 @@ body {
   animation-direction: alternate;
 }
 .m-index .container .center-box .share-friend .share_mess {
-  width: 393px;
+  width: 402px;
   height: 44px;
   margin: 0 auto;
   background-image: url("../img//index/share_mess.png");
+  background-color: 400px 44px;
 }
 .m-index .container .bottom-box {
   position: relative;
@@ -811,23 +845,19 @@ body {
   overflow-y: scroll;
   overflow-x: scroll;
 }
-.m-index .container .bottom-box .list-help .scroll-box .more {
-  width: 19px;
-  height: 34px;
-  left: 3.9rem;
-  background-image: url("../img//index/more.png");
-}
 .m-index .container .bottom-box .list-help .scroll-box .item-help {
   display: inline-block;
   width: 65px;
   height: 65px;
+  border-radius: 50%;
+  overflow: hidden;
   margin-right: 7px;
-  background-image: url("../img//index/friend.png");
 }
-.m-index .container .bottom-box .list-help .scroll-box .act-item {
-  width: 65px;
-  height: 65px;
-  background-image: url("../img//index/act_friend.png");
+.m-index .container .bottom-box .list-help .more {
+  width: 19px;
+  height: 34px;
+  left: 3.9rem;
+  background-image: url("../img//index/more.png");
 }
 .m-index .container .bottom-box .btn-checkDet {
   width: 1.26rem;
@@ -862,6 +892,11 @@ body {
   width: 2.37rem;
   height: 0.78rem;
   margin-top: 2.5rem;
+}
+.m-frame .frame .button .link {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 .m-frame .frame .receive {
   background-image: url('../img//button/btn_receive.png');
@@ -944,6 +979,18 @@ body {
   height: 0.95rem;
   background-image: url("../img//button/btn_hide.png");
 }
+.m-frame .message-wrap .message-text {
+  width: 5.11rem;
+  height: 2.93rem;
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
+  font-family: boldFont;
+  font-size: 0.3rem;
+  font-weight: 800;
+  word-wrap: break-word;
+  word-break: normal;
+}
 .m-frame .frist-wrap .content {
   width: 5.11rem;
   height: 2.93rem;
@@ -968,12 +1015,6 @@ body {
   margin: 0 auto;
   background-image: url('../img//frame/old_user.png');
 }
-.m-frame .point-8888-wrap .content {
-  width: 3.35rem;
-  height: 1.51rem;
-  margin: 0 auto;
-  background-image: url('../img//frame/none.png');
-}
 .m-frame .none-wrap .content {
   width: 3.6rem;
   height: 1.6rem;
@@ -986,11 +1027,17 @@ body {
   margin: 0 auto;
   background-image: url('../img//frame/no_found_role.png');
 }
-.m-frame .tip-name-wrap .tip-text {
-  width: 100%;
-  height: 0.3rem;
-  top: 40%;
+.m-frame .tip-name-wrap {
+  font-weight: 800;
   text-align: center;
+  word-break: break-word;
+}
+.m-frame .tip-name-wrap .tip-text {
+  width: 80%;
+  height: 0.3rem;
+  font-size: 0.25rem;
+  font-family: boldFont;
+  top: 40%;
 }
 .m-frame .tip-name-wrap .tip-name {
   top: 50%;
@@ -1059,8 +1106,8 @@ body {
   height: 5.09rem;
   background-image: url('../img//frame/roulette.png');
   background-size: cover;
-  left: 0.74rem;
-  top: 0.65rem;
+  left: 0.78rem;
+  top: 0.75rem;
 }
 .m-frame .roulette-wrap .panel-btn {
   position: absolute;
@@ -1173,11 +1220,10 @@ body {
   align-items: center;
   justify-content: flex-start;
 }
-.m-frame .friend-wrap .list-container .avatar {
+.m-frame .friend-wrap .list-container .friend-avatar {
   width: 54px;
   height: 54px;
   border: 50%;
-  background-image: url("../img//visitors/avatar.png");
   overflow: hidden;
 }
 .m-frame .friend-wrap .list-container .name {
@@ -1191,7 +1237,7 @@ body {
   z-index: 2;
   width: 750px;
   height: 1624px;
-  background-image: url("../img//visitors/bg.png");
+  background-image: url("../img//visitors/vis_bg.png");
 }
 .m-visitors .btn-relus {
   width: 0.69rem;
@@ -1281,7 +1327,6 @@ body {
   width: 54px;
   height: 54px;
   border: 50%;
-  background-image: url("../img//visitors/avatar.png");
   overflow: hidden;
 }
 .m-visitors .visitors-main .friend-list .list-container .name {

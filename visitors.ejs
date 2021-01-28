@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="gbk">
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <![endif]-->
@@ -19,9 +19,6 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     
-    <script src="<%=require ('./src/js/lib/mmd-plugin.min.1.0.2.js')%>"></script>
-    <script src="<%=require ('./src/js/lib/mmd.videoplayer.min.1.0.1.js')%>"></script>
-    <script src="<%=require ('./src/js/lib/vconsole.min.js')%>"></script>
     <!-- rem布局初始化设置start -->
     <script type="text/javascript">
         <%= require('raw-loader!./src/js/app/rem.js') %>
@@ -29,10 +26,7 @@
     <!-- rem布局初始化设置end -->
 
     <% if (process.env.NODE_ENV === 'handover') { %>
-        <% for (var css in htmlWebpackPlugin.files.css) { %>
-            <% var cssFile = htmlWebpackPlugin.files.css[css] %>
-            <link href="<%= cssFile %>" rel="stylesheet">
-        <% } %>
+        <link href="../ossweb-img/visitors.css" rel="stylesheet">
     <% } else { %>
         <% for (var css in htmlWebpackPlugin.files.css) { %>
             <% var cssFile = htmlWebpackPlugin.files.css[css].substr(htmlWebpackPlugin.files.publicPath.length); %>
@@ -53,14 +47,15 @@
 
                 <div class="m-loading"></div>
                 <div class="m-audio hide" id="m-audio">
-                    <audio id='audio' src=" <%= require('./src/media/audio.mp3') %>" loop></audio>
+                    <audio id='audio' src=" https://mdup.apdcdn.tc.qq.com/vcloud1022.tc.qq.com/1022_5397b645b2d344998d60d25651e2fd1e.f0.mp3?vkey=A8EED40C92FD0469DB9D2F1180E88F2BB410B2153F838C190221C94DB139B96FD8B2169A79D686B4FD40F26EA3565AF6EEF4C939B1C1F838E63F7DF58EE598546F200AEB86BF81DEDDB133C9CB754CFEF4F91D77A35A9F1B&sha=0" autoplay="true" loop></audio>
                 </div>
                 <!-- 客态页模块 -->
-                <div class="m-visitors sizcover abcter">
+                <div class="m-visitors sizcover abcter hide">
                     <div class="btn-relus sizcover abcter"></div>
                     <div class="visitors-main abcter">
                         <div class="top-content">
                             <div class="top-title sizcover"></div>
+                            <!-- 好友助力值 -->
                             <div class="friend-value sizcover"></div>
                             <div class="title-text sizcover"></div>
                             <div class="button-box">
@@ -69,57 +64,48 @@
                             </div>
                             <div class="invitation-tip sizcover"></div>
                         </div>
+                        <!-- 好友列表 -->
                         <div class="friend-list sizcover permit-scroll">
                             <div class="list-container permit-scroll">
                                 <div class="friend-item permit-scroll">
-                                    <div class="avatar sizcover"></div>
+                                    <img src="<%= require('./src/img/index/act_friend.png') %>" alt="" class="avatar sizcover"></img>
                                     <div class="name">呢称xxxx</div>
                                     <div class="value">440</div>
                                 </div>
                                 <div class="friend-item permit-scroll">
-                                    <div class="avatar sizcover"></div>
+                                    <img src="<%= require('./src/img/index/act_friend.png') %>" alt="" class="avatar sizcover"></img>
                                     <div class="name">呢称xxxx</div>
                                     <div class="value">420</div>
                                 </div>
                                 <div class="friend-item permit-scroll">
-                                    <div class="avatar sizcover"></div>
+                                    <img src="<%= require('./src/img/index/act_friend.png') %>" alt="" class="avatar sizcover"></img>
                                     <div class="name">呢称xxxx</div>
                                     <div class="value">410</div>
                                 </div>
                                 <div class="friend-item permit-scroll">
-                                    <div class="avatar sizcover"></div>
+                                    <img src="<%= require('./src/img/index/act_friend.png') %>" alt="" class="avatar sizcover"></img>
                                     <div class="name">呢称xxxx</div>
                                     <div class="value">400</div>
                                 </div>
                                 <div class="friend-item permit-scroll">
-                                    <div class="avatar sizcover"></div>
+                                    <img src="<%= require('./src/img/index/act_friend.png') %>" alt="" class="avatar sizcover"></img>
                                     <div class="name">呢称xxxx</div>
                                     <div class="value">390</div>
                                 </div>
                                 <div class="friend-item permit-scroll">
-                                    <div class="avatar sizcover"></div>
+                                    <img src="<%= require('./src/img/index/act_friend.png') %>" alt="" class="avatar sizcover"></img>
                                     <div class="name">呢称xxxx</div>
                                     <div class="value">380</div>
                                 </div>
                                 <div class="friend-item permit-scroll">
-                                    <div class="avatar sizcover"></div>
+                                    <img src="<%= require('./src/img/index/act_friend.png') %>" alt="" class="avatar sizcover"></img>
                                     <div class="name">呢称xxxx</div>
                                     <div class="value">370</div>
                                 </div>
                                 <div class="friend-item permit-scroll">
-                                    <div class="avatar sizcover"></div>
+                                    <img src="<%= require('./src/img/index/act_friend.png') %>" alt="" class="avatar sizcover"></img>
                                     <div class="name">呢称xxxx</div>
                                     <div class="value">360</div>
-                                </div>
-                                <div class="friend-item permit-scroll">
-                                    <div class="avatar sizcover"></div>
-                                    <div class="name">呢称xxxx</div>
-                                    <div class="value">350</div>
-                                </div>
-                                <div class="friend-item permit-scroll">
-                                    <div class="avatar sizcover"></div>
-                                    <div class="name">呢称xxxx</div>
-                                    <div class="value">340</div>
                                 </div>
                             </div>
                         </div>
@@ -129,6 +115,14 @@
 
                 <!-- 弹框模块 -->
                 <div class="m-frame absf sizcover hide">
+                    <!-- 自定义弹框   -->
+                    <div class="message-wrap frame abcter sizcover hide">
+                        <div class="message-text abcter sizcover" id="message-text">自定义文本</div>
+                        <div class="btn-hide-frame abs sizcont"></div>
+                        <div class="confirm button abcter sizcover">
+                            <a href="JavaScript:hideFrame();" class="link"></a>
+                        </div>
+                    </div>
                     <!-- 规则弹框 -->
                     <div class="relus-wrap absf sizcover hide permit-scroll">
                         <div class="relus-text permit-scroll">
@@ -170,7 +164,9 @@
                                 下载游戏, 可为好友获得更高助力值哦~
                             </div>
                         </div>
-                        <div class="download button abcter sizcover"></div>
+                        <div class="download button abcter sizcover">
+                            <a href="" class="link"></a>
+                        </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
                 </div>
@@ -208,12 +204,21 @@
     <!-- <script src="//cdnjs.gtimg.com/cdnjs/libs/zepto/1.0rc1/zepto.min.js"></script> -->
 
     <!-- 本地zepto -->
-    <script src="<%= require('./src/js/lib/zepto.min.1.2.js') %>"></script>
-    <script src="<%= require('./src/js/lib/loteryround.min.js')%>"></script>
-    <script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
-    <script src="https://ossweb-img.qq.com/images/spiderMediaData/slg_new/mediaURLData_https.js"></script>
-    <script src="//ossweb-img.qq.com/images/js/TGMobileShare/TGMobileShare.min.js"></script>
-    <script>
+
+    <% if (process.env.NODE_ENV === 'handover') { %>
+        <script src="../ossweb-img/js/lib/zepto.min.1.2.js"></script>
+        <script src="../ossweb-img/js/lib/loteryround.min.js"></script>
+        <script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+        <script src="https://ossweb-img.qq.com/images/spiderMediaData/slg_new/mediaURLData_https.js"></script>
+        <!-- <script src="//ossweb-img.qq.com/images/js/TGMobileShare/TGMobileShare.min.js"></script> -->
+    <% } else { %>
+        <script src="<%= require('./src/js/lib/zepto.min.1.2.js') %>"></script>
+        <script src="<%= require('./src/js/lib/loteryround.min.js')%>"></script>
+        <script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+        <script src="https://ossweb-img.qq.com/images/spiderMediaData/slg_new/mediaURLData_https.js"></script>
+        <script src="//ossweb-img.qq.com/images/js/TGMobileShare/TGMobileShare.min.js"></script>
+    <% } %>
+    <!-- <script>
         TGMobileShare({
         shareTitle:'乱世王者', //不设置或设置为空时，页面有title，则调取title
         shareDesc:'', //不设置或设置为空时，页面有Description，则调取Description
@@ -221,8 +226,8 @@
         shareLink:'game.gtimg.cn/images/slg/cp/a20210119ms/index.html', //分享链接要跟当前页面同域名(手Q分享有这个要求) ,不设置或设置为空时，默认调取当前URL
         actName:'a20210119ms' //点击流命名，用于统计分享量，专题一般采用目录名称如a20151029demo
         });
-    </script>
-    <script>
+    </script> -->
+    <!-- <script>
         //此段代码不能放到外链JS中，
         var setSite={ //设置网站属性 
             siteType:"a20210119ms", //必填项:"os"代表是官网，如果不是，则填写actName例如a20160701xxx
@@ -232,12 +237,9 @@
             osact:0 //选填项:默认是0。osact=0表示非官网专题；osact=pc表示pc官网/pc官网专题；osact=m表示移动官网/移动官网专题；osact=ingame表示微社区/微社区专题
         };
         if(typeof(pgvMain)=='function')pgvMain();//千万不能忘记！
-    </script>
+    </script> -->
     <% if (process.env.NODE_ENV === 'handover') { %>
-        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-            <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry; %>
-            <script type="text/javascript" src="<%= jsFile %>"></script>
-        <% } %>
+        <script type="text/javascript" src="../ossweb-img/visitors.js"></script>
     <% } else { %>
         <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
             <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry.substr(htmlWebpackPlugin.files.publicPath.length); %>
@@ -245,5 +247,60 @@
         <% } %>
     <% } %>
 
+
     </body>
+    <script>
+        var gloadEls = {
+            pageBoxs: {
+                audioPage: $('.m-audio'), // 音频模块
+                frameWrap: $('.m-frame'),   // 弹窗外层遮罩,
+                visitorsPage: $('.m-visitors'), // 客态页模块
+            },
+            buttons: {
+                helpFriendBtn: $('.help_friend-btn'), // 助力好友按钮
+                invitationBtn: $('.invitation-btn'), // 发起助力按钮
+            },
+            frames: {
+                messageFrame: $('.message-wrap'), // 自定义内容弹框
+                relusFrame: $('.relus-wrap'), // 规则弹框
+                succeedFrame: $('.succeed-wrap') //成功助力好友弹框
+            },
+            friendList: $('.friend-list'),  // 好友列表
+        }
+        // 显示弹框
+        function showFrame (el) {
+            // gloadElements.pageBoxs.frameWrap 最外层盒子, 黑色背景遮罩层, 遍历隐藏所以子元素
+            gloadEls.pageBoxs.frameWrap.children().hide();
+            gloadEls.pageBoxs.frameWrap.show();
+            el.show();
+        };
+        // 隐藏弹框
+        function hideFrame (el) {
+            // 隐藏外层元素
+            gloadEls.pageBoxs.frameWrap.hide();
+        }
+
+        // 示例    显示助力好友列表
+        gloadEls.buttons.helpFriendBtn.click(() => {
+            showFrame(gloadEls.frames.succeedFrame);
+        })
+        // 邀请好友助力
+        gloadEls.buttons.invitationBtn.click(() => {
+            window.location.href = 'index.html';
+        })
+        // 好友助力值
+        window.replace(8888, '.friend-value');
+
+        // 隐藏按钮
+        $('.btn-hide-frame').on('click', (event) => {
+            var frameWrap = gloadEls.pageBoxs.frameWrap // 蒙层弹框
+            frameWrap.hide();
+            $(event.srcElement).parent().hide();
+        });
+    </script>
+    <% if (process.env.NODE_ENV === 'handover') { %>
+        <script src="//ulink.qq.com/ulinksdk/dist/js/ulink.2.0.8.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/common.js"></script>
+    <% } %>
 </html>

@@ -101,6 +101,7 @@ module.exports = function () {
                 // template: 'ejs-render-loader!index.ejs',
                 inject: false,
                 hash: false,
+                chunks: ['main'],
                 minify: {
                     removeComments: true, // 移除HTML中的注释
                     collapseWhitespace: false, // 删除空白符与换行符
@@ -114,6 +115,7 @@ module.exports = function () {
                 // template: 'ejs-render-loader!index.ejs',
                 inject: false,
                 hash: false,
+                chunks: ['visitors'],
                 minify: {
                     removeComments: true, // 移除HTML中的注释
                     collapseWhitespace: false, // 删除空白符与换行符

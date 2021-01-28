@@ -64,12 +64,12 @@ function foramtTelNum (num) {
     for (var i = 0; i < str.length; i++) {
         str.substring(i, i + 1);
         let index = str[i] * 1;
-        let imgSrc = require(`../../../img/num/${index}.png`);
+        let imgSrc = `https://game.gtimg.cn/images/slg/act/4876/a20210119msu/${index}.png`;
         content += `<img src='${imgSrc}' class="value-img" alt="${index}"/>`;
     }
     return content;
 };
-function replace (number, el) {
+window.replace = function (number, el) {
     const MyValue = $(el);
     let imgTarget = foramtTelNum(number);
     MyValue.empty();
@@ -77,7 +77,7 @@ function replace (number, el) {
 };
 // 加载页对象
 var VisitorsViewController = function () {
-    PTTSendClick('page-visitors', 'load-start', '开始加载');
+    // PTTSendClick('page-visitors', 'load-start', '开始加载');
     // 公共变量
     var _that = this;
 
@@ -87,15 +87,15 @@ var VisitorsViewController = function () {
     _private.pageEl = $('.m-visitors');
     _private.isInit = false;
 
+    // 是否播放背景音乐
+    _private.isPlay = false;
+
     // index
     const frameWrap = $('.m-frame'); // 弹框蒙层
     // frame
-    const succeedFrame = $('.succeed-wrap');
     const relusButton = $('.btn-relus'); // 规则按钮
     const hidFrame = $('.btn-hide-frame');
     // visitors
-    const helpFriendBtn = $('.help_friend-btn');
-    const invitationBtn = $('.invitation-btn');
     // 初始化，包括整体页面
     _private.init = function () {
         if (_private.isInit === true) {
@@ -105,32 +105,24 @@ var VisitorsViewController = function () {
         // 页面加载完成
         _private.gload = new Config.Preload(Config.pageImgs);
         _private.gload.onload = function () {
-            PTTSendClick('page-visitors', 'load-end', '加载结束');
             _that.show();
-            $('.friend-list').show();
             _private.isTapStart = false;
+            // 播放背景音乐
+            $('.m-visitors').click(() => {
+                if (!_private.isPlay) {
+                    var audio = document.getElementById('audio');
+                    audio.play();
+                    _private.isPlay = true;
+                };
+            });
         };
-
         _private.variablePageController = function () {
-            replace(8888, '.friend-value');
             relusButton.click((event) => {
-                console.log(frameWrap);
-                PTTSendClick('btn', 'show-relus', '显示规则弹框');
                 frameWrap.show();
                 $('.relus-wrap').show();
             });
-            helpFriendBtn.click(() => {
-                PTTSendClick('btn', 'help-friend-btn', '为好友助力');
-                frameWrap.show();
-                succeedFrame.show();
-            });
-            invitationBtn.click(() => {
-                PTTSendClick('btn', 'invitation-btn', '邀请助力');
-                window.location.href = 'index.html';
-            });
             // 统一使用隐藏函数
             hidFrame.on('click', (event) => {
-                PTTSendClick('btn', `hide-frame`, '隐藏弹框');
                 frameWrap.hide();
                 $(event.srcElement).parent().hide();
             });

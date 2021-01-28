@@ -35,11 +35,12 @@ if (fs.existsSync('src/img/kf')) {
 module.exports = function () {
     return {
         entry: {
-            main: './src/js/index.js'
+            main: './src/js/index.js',
+            visitors: './src/js/visitors.js'
         },
         output: {
             path: path.resolve(__dirname, './dist/' + handoverDir + '/ossweb-img'),
-            filename: '[name].[hash:8].js',
+            filename: '[name].js',
             publicPath: config.handover
         },
         module: {
@@ -117,7 +118,7 @@ module.exports = function () {
                         {
                             loader: 'url-loader',
                             options: {
-                                limit: 3000,
+                                limit: 1,
                                 name: '[name].[ext]',
                                 esModule: false
                             }
@@ -155,10 +156,11 @@ module.exports = function () {
                 }
             }),
             new HtmlWebpackPlugin({
-                filename: '../index.html',
+                filename: '../html/index.html',
                 template: 'index.ejs',
                 inject: false,
                 hash: false,
+                chunks: ['main'],
                 minify: {
                     removeComments: false, // 移除HTML中的注释
                     collapseWhitespace: false, // 删除空白符与换行符
@@ -167,10 +169,11 @@ module.exports = function () {
                 }
             }),
             new HtmlWebpackPlugin({
-                filename: '../visitors.html',
+                filename: '../html/visitors.html',
                 template: 'visitors.ejs',
                 inject: false,
                 hash: false,
+                chunks: ['main'],
                 minify: {
                     removeComments: false, // 移除HTML中的注释
                     collapseWhitespace: false, // 删除空白符与换行符

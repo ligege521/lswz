@@ -82,88 +82,8 @@ function initVideo () {
     return videoPlayer;
 };
 
-// 获取路径参数
-function getQueryVariable (variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split('=');
-        if (pair[0] === variable) { return pair[1]; };
-    }
-    return (false);
-};
-// 当前助力值替换图片
-function foramtTelNum (num) {
-    var content = '';
-    var str = num.toString();
-    for (var i = 0; i < str.length; i++) {
-        str.substring(i, i + 1);
-        let index = str[i] * 1;
-        let imgSrc = require(`../../../img/num/${index}.png`);
-        content += `<img src='${imgSrc}' class="value-img" alt="${index}"/>`;
-    }
-    return content;
-};
-function replace (number, el) {
-    const MyValue = $(el);
-    let imgTarget = foramtTelNum(number);
-    MyValue.empty();
-    MyValue.append(imgTarget);
-};
- // 转盘抽奖
-function roulette () {
-    var panel = new PanelLotery({
-        length: 5,
-        duration: 3000,
-        el: '#ltpanel'
-    });
-    $('.panel-btn').on('click', function (event) {
-        event.preventDefault();
-        if (panel.playing) return;
-        var n = Math.floor(Math.random() * 5);
-        console.log(n);
-        panel.playto(n, function () {
-            rouletteFrame.hide();
-            switch (n) {
-                case 0:
-                    const gameRole = $('.game-role-wrap');
-                    gameRole.show();
-                    frameWrap.show();
-                    break;
-                case 1:
-                    const money88 = $('.money-88');
-                    money88.show();
-                    frameWrap.show();
-                    break;
-                case 2:
-                    const money28 = $('.money-28');
-                    money28.show();
-                    frameWrap.show();
-                    break;
-                case 3:
-                    const none = $('.none-wrap');
-                    none.show();
-                    frameWrap.show();
-                    break;
-                case 4:
-                    const money888 = $('.money-888');
-                    money888.show();
-                    frameWrap.show();
-                    break;
-                default:
-                    $('.none-wrap').show();
-                    frameWrap.show();
-            }
-        });
-    });
-};
-roulette();
-replace(8888, '.my-value');
-
-const loadPage = $('.m-loading');
 const videoPage = $('.m-video');
 const indexPage = $('.m-index');
-const visitorsPage = $('.m-visitors');
 // 视频页按钮
 const startButton = $('.start-btn');
 const skipButton = $('.btn-skip');
@@ -172,24 +92,8 @@ const helpButton = $('.btn-help');
 // index
 const backButton = $('.btn-back'); // 返回按钮
 const frameWrap = $('.m-frame'); // 弹框蒙层
-const shareButton = $('.share-friend');
-const relusButton = $('.btn-relus'); // 规则按钮
-const prizedOne = $('.prize-one'); // 奖励按钮
-const prizeTwo = $('.prize-two');
-const prizeThree = $('.prize-three');
-const hidFrame = $('.btn-hide-frame'); // 隐藏按钮
-const progress = $('.progress-value');
-// frame
-const fristFrame = $('.frist-wrap');
-const sectionFrame = $('.section-frame');
-const notFoundFrame = $('.no-found-role');
-const olduserFrame = $('.old-user-wrap');
-const succeedFrame = $('.succeed-wrap');
-// visitors
-const helpFriendBtn = $('.help_friend-btn');
-const invitationBtn = $('.invitation-btn');
 
-const rouletteFrame = $('.roulette-wrap');
+const relusButton = $('.btn-relus'); // 规则按钮
 // 加载页对象
 var IndexViewController = function () {
     // 公共变量
@@ -198,121 +102,116 @@ var IndexViewController = function () {
     var _private = {};
 
     _private.pageEl = $('.m-loading');
-    // 是否第一次进入，第一次进入显示新手弹框
-    _private.isFrist = true;
+    // 是否第一次进入
+    _private.isNewUser = false;
+    // 是否点击开门
+    _private.isTapOpen = false;
+    // 是否点击回看视频, 判断后面视频播放完成是否还需要弹框
+    _private.isBackVideo = false;
+    // 是否在播放背景音乐
+    _private.isAudioPlay = false;
+    // 是否点击的计时器
+    _private.coutDown = false;
 
     _private.isInit = false;
-    // 音频, 视频
+    // 视频
     _that.video = initVideo();
-    _private.audio = $('#audio');
-    _private.audioIsplay = false;
     const videoElement = _that.video.videoElement;
+    // 背景音频
+    const audio = document.getElementById('audio');
     // 初始化，包括整体页面
     _private.init = function () {
         if (_private.isInit === true) {
             return;
         }
         initProject();
-        // 加载体现在页面上
+        $('.m-index').click(() => {
+            if (!_private.isAudioPlay) {
+                console.log('音频播');
+                audio.play();
+                _private.isAudioPlay = true;
+            };
+        });
+        // 加载体出现在页面上
         _private.processLineEl = $('.move');
         _private.gload = new Config.Preload(Config.pageImgs);
         _private.gload.onloading = function (p) {
             let per = 100 - p;
             _private.processLineEl.css('marginLeft', -per + '%');
-            PTTSendClick('page', 'loads-tart', '开始加载');
         };
-
+        // 是否新用户
+        window.canNewUser = function canNewUser (user) {
+            _private.isNewUser = user;
+            if (_private.isNewUser) {
+                _private.gload.load();
+            } else {
+                $('.m-loading').hide();
+                $('.m-index').show();
+            }
+        };
+        // 页面加载完成
+        _private.gload.onload = function () {
+            // PTTSendClick('page', 'load-end', '加载结束');
+            _private.hieprogress();
+            $('.m-loading').show(); // 这里是显示loading 页
+            startButton.show();
+            _private.isTapStart = false;
+            // 点击拿红包按钮
+            startButton.click((event) => {
+                _private.isTapStart = true;
+                _that.video.play();
+                videoElement.addEventListener('timeupdate', _private.repea, false);
+            });
+        };
+        // 视频播放事件函数
         _private.repea = function () {
-            if (videoElement.currentTime > 0.3) {
-                $('.m-video').show();
+            if (videoElement.currentTime > 0.3) { // 视频大于0.3秒时 视频模块出现，开始按钮消失
+                videoPage.show();
                 _that.hide();
                 startButton.hide();
-                _private.videoPageController();
+                helpButton.hide();
+                skipButton.show();
+                indexPage.hide();
             }
-            if (videoElement.currentTime >= 17.5) {
+            if (videoElement.currentTime >= 17.5) { // 当视频大于 17.5秒时开门按钮显示出来
                 openButton.show();
             }
-            if (videoElement.currentTime >= 18.9) {
+            if (videoElement.currentTime >= 18.9) { // 当视频大于 18.9秒时重复播放
                 if (!videoElement.muted) {
                     videoElement.muted = true;
                 }
                 videoElement.currentTime = 18.0;
             }
-        };
-        // 页面加载完成
-        _private.gload.onload = function () {
-            PTTSendClick('page', 'load-end', '加载结束');
-            _private.hieprogress();
-            $('.m-loading').show();
-            startButton.show();
-            _private.isTapStart = false;
-            // 获取页面参数
-            _private.pageId = getQueryVariable('page') * 1;
-            startButton.click((event) => {
-                PTTSendClick('btn', 'start', '引入动画视频');
-                _private.isTapStart = true;
-                _private.hadlerPage();
-                PTTSendClick('btn', 'play-video', '播放视频');
-            });
-        };
-          // 获取url地址参数判断用户是否第一次点击，分享链接需要带参数
-        _private.hadlerPage = function () {
-            let pageId = _private.pageId;
-            _private.variablePageController();
-            _private.indexPageController();
-            _private.framePageController();
-            if (pageId === 1) {
-                loadPage.hide();
-                videoPage.hide();
-                visitorsPage.show();
-                _private.audio[0].play();
-                _private.pageId = 0;
-                PTTSendClick('btn', 'visitors-page', '跳转客态页');
-            } else if (pageId === 0) {
-                PTTSendClick('btn', 'index-page', '进入主态页');
-                visitorsPage.hide();
-                _that.video.play();
-                videoElement.addEventListener('timeupdate', _private.repea, false);
-            }
-        };
-
-        _private.variablePageController = function () {
-            replace(8888, '.friend-value');
-            helpFriendBtn.click(() => {
-                PTTSendClick('btn', 'help-friend-btn', '为好友助力');
-                frameWrap.show();
-                succeedFrame.show();
-            });
-            invitationBtn.click(() => {
-                PTTSendClick('btn', 'invitation-btn', '邀请助力');
-                indexPage.show();
-                visitorsPage.hide();
-            });
-        };
-        // 视频页按钮
-        _private.videoPageController = function () {
-            skipButton.show();
-             // 点击跳过button
-            skipButton.click(() => {
-                PTTSendClick('btn', 'skip-btn', '跳过视频');
-                videoElement.removeEventListener('timeupdate', _private.repea, false);
-                videoElement.currentTime = 49;
-                skipButton.hide();
-                openButton.hide();
-                // helpButton.show();
-            });
             // 用户没有点击，三秒后自动跳转
-            if (videoElement.currentTime > 18) {
+            if (videoElement.currentTime > 18 && !_private.isTapOpen) {
+                _private.isTapOpen = true;
                 setTimeout(() => {
                     videoElement.removeEventListener('timeupdate', _private.repea, false);
                     if (videoElement.muted) {
                         videoElement.muted = false;
                     }
                     openButton.hide();
+                    videoElement.addEventListener('timeupdate', _private.showHelp, false);
                 }, 4000);
             }
+        };
+
+        // 视频页按钮
+        _private.videoPageController = function () {
+            skipButton.show();
+             // 点击跳过button
+            skipButton.click(() => {
+                videoElement.removeEventListener('timeupdate', _private.repea, false);
+                videoElement.addEventListener('timeupdate', _private.showHelp, false);
+                videoElement.currentTime = 50;
+                skipButton.hide();
+                openButton.hide();
+                setTimeout(() => {
+                    helpButton.show();
+                }, 500);
+            });
             openButton.click(() => {
-                PTTSendClick('btn', 'open-btn', '召唤门神');
+                // PTTSendClick('btn', 'open-btn', '召唤门神');
                 videoElement.removeEventListener('timeupdate', _private.repea, false);
                 if (videoElement.muted) {
                     videoElement.muted = false;
@@ -320,169 +219,75 @@ var IndexViewController = function () {
                 openButton.hide();
             });
             _private.showHelp = function () {
-                if (videoElement.currentTime >= 48.02) {
+                if (videoElement.currentTime >= 50.02) {
+                    skipButton.hide();
                     helpButton.show();
                 }
-                if (videoElement.currentTime >= 52 && !_private.audioIsplay) {
-                    _private.audio[0].play();
-                    // 是否点击助力
-                    _private.isTapHelp = false;
-                    if (!_private.isTapHelp) {
-                        setTimeout(() => {
-                            helpButton.hide();
-                            videoPage.hide();
-                            indexPage.show();
-                            if (_private.isFrist) {
-                                frameWrap.show();
-                                $('.frist-wrap').show();
-                                _private.isFrist = false;
-                            }
-                        }, 4000);
+                if (videoElement.currentTime >= 52 && !_private.coutDown) {
+                    if (!_private.isAudioPlay) {
+                        audio.play();
+                        _private.isAudioPlay = true;
                     }
+                    // 用户4秒没有点击助力，自动进入
+                    _private.coutDown = setTimeout(() => {
+                        helpButton.hide();
+                        videoPage.hide();
+                        indexPage.show();
+                        if (!_private.isBackVideo && _private.isNewUser) {
+                            _private.isBackVideo = true;
+                            window.videoEndFrame && window.videoEndFrame();
+                        }
+                    }, 4000);
                 }
             };
             helpButton.click((event) => {
-                PTTSendClick('btn', 'help-btn', '助力好友');
+                // 清除定时器
+                clearTimeout(_private.coutDown);
+                _private.coutDown = false;
                 helpButton.hide();
                 videoPage.hide();
                 indexPage.show();
+                videoElement.removeEventListener('timeupdate', _private.showHelp, false);
                 // 播放音频
-                _private.audio[0].play();
-                if (_private.isFrist) {
-                    frameWrap.show();
-                    $('.frist-wrap').show();
-                    _private.isFrist = false;
+                if (!_private.isAudioPlay) {
+                    audio.play();
+                    _private.isAudioPlay = true;
+                }
+                if (!_private.isBackVideo && _private.isNewUser) {
+                    _private.isBackVideo = true;
+                    window.videoEndFrame && window.videoEndFrame();
                 }
             });
-            videoElement.addEventListener('timeupdate', _private.showHelp, false);
         };
+
         // 主页按钮
         _private.indexPageController = function () {
-            // 回播
+            // 回播视频
             backButton.click((event) => {
-                PTTSendClick('btn', 'back-btn', '回看视频');
-                helpButton.hide();
-                startButton.show();
-                indexPage.hide();
-                visitorsPage.hide();
-                loadPage.show();
-                // videoPage.show();
-                _private.audio[0].pause();
-                videoElement.currentTime = 1;
-                videoElement.pause();
-            });
-            // 任务进度
-            prizedOne.click(function () {
-                frameWrap.show();
-                prizedOne.find('.prize-15').addClass('prize-15-grey');
-                prizedOne.find('.state').hide();
-                $('.reward-2000').show();
-                PTTSendClick('btn', 'prized-one-btn', '第一个任务');
-            });
-            prizeTwo.click(function () {
-                frameWrap.show();
-                prizeTwo.find('.prize-game').addClass('prize-game-grey');
-                prizeTwo.find('.state').hide();
-                $('.reward-8888').show();
-                PTTSendClick('btn', 'prize-two-btn', '第二个任务');
-            });
-            prizeThree.click(function () {
-                frameWrap.show();
-                prizeThree.find('.prize-888').addClass('prize-888-grey');
-                prizeThree.find('.state').hide();
-                $('.roulette-wrap').show();
-                PTTSendClick('btn', 'prize-three-btn', '第三个任务');
-            });
-            shareButton.click(function () {
-                frameWrap.show();
-                $('.share').show();
-                PTTSendClick('btn', 'share-btn', '邀请好友');
-            });
-            $('.share').click(function () {
-                frameWrap.hide();
-                $('.share').hide();
-                PTTSendClick('btn', 'share-mod', '取消邀请好友');
-            });
-            // 领取，下载等按钮，
-            $('.btn-hide').click((event) => {
-                frameWrap.hide();
-                $(event.srcElement).parent().hide();
-                PTTSendClick('btn', 'hide-frame-btn', '隐藏弹框');
+                console.log('回拨');
+                videoElement.currentTime = 0;
+                audio.pause();
+                _private.isAudioPlay = false;
+                _that.video.play();
+                videoElement.addEventListener('timeupdate', _private.repea, false);
+                // 阻止事件冒泡
+                event.stopPropagation();
             });
             $('.btn-checkDet').click(() => {
                 frameWrap.show();
                 $('.friend-wrap').show();
-                PTTSendClick('btn', 'friend-list', '查看好友助力列表');
-            });
-            // 设置任务进度百分比
-            setProgress();
-            function setProgress () {
-                const stateArr = $('.state');
-                let max = 10000;
-                let myValue = 2000;
-                let per = percentage(myValue, max);
-                if (myValue >= 2000) {
-                    stateArr.eq(0).addClass('state-1');
-                    $('.point-img').eq(0).addClass('point-2000-act');
-                }
-                if (myValue >= 8888) {
-                    stateArr.eq(0).addClass('state-1');
-                    $('.point-img').eq(1).addClass('point-8888-act');
-                }
-                if (myValue >= 10000) {
-                    stateArr.eq(0).addClass('state-1');
-                    $('.point-img').eq(2).addClass('point-10000-act');
-                }
-                progress.css({
-                    width: `${per}%`
-                });
-            };
-            function percentage (num, total) {
-                if (num === 0 || total === 0) {
-                    return 0;
-                }
-                return (Math.round(num / total * 10000) / 100.00);
-            };
-            // 统一使用隐藏函数
-            hidFrame.on('click', (event) => {
-                PTTSendClick('btn', `hide-frame`, '隐藏弹框');
-                frameWrap.hide();
-                $(event.srcElement).parent().hide();
             });
             // 显示规则
             relusButton.click((event) => {
-                PTTSendClick('btn', 'show-relus', '显示规则弹框');
+                // PTTSendClick('btn', 'show-relus', '显示规则弹框');
                 frameWrap.show();
                 $('.relus-wrap').show();
             });
         };
-        // 弹框层
-        _private.framePageController = function () {
-            fristFrame.find('.receive').click(() => {
-                PTTSendClick('btn', 'frist-frame-receive-btn', '首次进入领取按钮');
-                fristFrame.hide();
-                sectionFrame.show();
-            });
-            sectionFrame.find('.confirm').click(() => {
-                PTTSendClick('btn', 'section-confirm-btn', '选区确认');
-                sectionFrame.hide();
-                notFoundFrame.show();
-            });
-            notFoundFrame.find('.reset').click(() => {
-                PTTSendClick('btn', 'reset-btn', '重新选择选区');
-                frameWrap.show();
-                sectionFrame.show();
-                notFoundFrame.hide();
-            });
-            olduserFrame.find('.receive').click(() => {
-                PTTSendClick('btn', 'receive-btn', '老用户领取奖励');
-                olduserFrame.hide();
-                frameWrap.hide();
-            });
-        };
-
-        // _private.visivorsPage = function () {
-        // };
+        // 绑定主态页事件
+        _private.indexPageController();
+        // 视频页事件
+        _private.videoPageController();
 
         _private.gload.onfail = function (msg) {
             console.log(msg);
@@ -509,17 +314,6 @@ var IndexViewController = function () {
     _that.load = function () {
         _private.gload.load();
     };
-    // 离开页面关闭音乐
-    var hiddenProperty = 'hidden' in document ? 'hidden' : 'webkitHidden' in document ? 'webkitHidden' : 'mozHidden' in document ? 'mozHidden' : null;
-    var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
-    var onVisibilityChange = function () {
-        if (!document[hiddenProperty]) {
-            document.title = '激活状态';
-        } else {
-            document.title = '离开页面啦';
-        }
-    };
-    document.addEventListener(visibilityChangeEvent, onVisibilityChange);
 /* 此代码解决横竖屏切换时iso上触发多次的bug
     var rotateELSize = function (e) {
         var winWidth = document.documentElement.clientWidth;

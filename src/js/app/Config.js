@@ -58,7 +58,7 @@ Config.pageImgs = {
         },
         {
             name: 'list_bg',
-            url: require('../../img/index/bg.png')
+            url: require('../../img/index/index_bg.png')
         },
         {
             name: 'my_value_bg',
@@ -86,27 +86,27 @@ Config.pageImgs = {
         },
         {
             name: 'prize_game_grey',
-            url: require('../../img/index/point_2000.png')
+            url: require('../../img/index/point_icon_2000.png')
         },
         {
             name: 'prize_game',
-            url: require('../../img/index/point_8888.png')
+            url: require('../../img/index/point_icon_8888.png')
         },
         {
             name: 'prize_one',
-            url: require('../../img/index/point_10000.png')
+            url: require('../../img/index/point_icon_10000.png')
         },
         {
             name: 'prize_three',
-            url: require('../../img/index/point_act_2000.png')
+            url: require('../../img/index/point_act_icon_2000.png')
         },
         {
             name: 'prize_two',
-            url: require('../../img/index/point_act_8888.png')
+            url: require('../../img/index/point_act_icon_8888.png')
         },
         {
             name: 'prize_two',
-            url: require('../../img/index/point_act_10000.png')
+            url: require('../../img/index/point_act_icon_10000.png')
         },
         {
             name: 'share_mess',
@@ -249,26 +249,6 @@ Config.pageImgs = {
             url: require('../../img/frame/relus_bg.png')
         },
         {
-            name: 'point_8888',
-            url: require('../../img/index/point_8888.png')
-        },
-        {
-            name: 'point_10000',
-            url: require('../../img/index/point_10000.png')
-        },
-        {
-            name: 'point_act_2000',
-            url: require('../../img/index/point_act_2000.png')
-        },
-        {
-            name: 'point_act_8888',
-            url: require('../../img/index/point_act_8888.png')
-        },
-        {
-            name: 'point_act_10000',
-            url: require('../../img/index/point_act_10000.png')
-        },
-        {
             name: 'prize_15_grey',
             url: require('../../img/index/prize_15_grey.png')
         },
@@ -323,6 +303,46 @@ Config.pageImgs = {
         {
             name: '9',
             url: require('../../img/num/9.png')
+        },
+        {
+            name: 'btn_appraisal',
+            url: require('../../img/button/btn_appraisal.png')
+        },
+        {
+            name: 'btn_confirm',
+            url: require('../../img/button/btn_confirm.png')
+        },
+        {
+            name: 'btn_download',
+            url: require('../../img/button/btn_download.png')
+        },
+        {
+            name: 'btn_hide',
+            url: require('../../img/button/btn_hide.png')
+        },
+        {
+            name: 'btn_receive',
+            url: require('../../img/button/btn_receive.png')
+        },
+        {
+            name: 'btn_reset',
+            url: require('../../img/button/btn_reset.png')
+        },
+        {
+            name: 'help_btn',
+            url: require('../../img/button/help_btn.png')
+        },
+        {
+            name: 'help_text',
+            url: require('../../img/button/help_text.png')
+        },
+        {
+            name: 'skip',
+            url: require('../../img/button/skip.png')
+        },
+        {
+            name: 'start_btn',
+            url: require('../../img/button/start_btn.png')
         }
     ],
     sprites: [

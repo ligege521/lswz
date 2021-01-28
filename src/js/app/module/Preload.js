@@ -297,17 +297,6 @@ Preload.LoadKeyImgs = (function () {
         this.onload = null;
         this.onloading = null;
         this.load = function () {
-            /*
-            // 如果在内存中已经保存
-            if (Preload.LoadKeyImgs.buffer[prefixName.slice(0, prefixName.length-1)]) {
-                for(let i = 0; i < keyTo+1; i++) {
-                    count++;
-                    that.onloading && that.onloading(100);
-                }
-                that.onload && that.onload();
-                return;
-            };
-            **/
             for (let i = 0; i < keyTo + 1; i++) {
                 let img = new Image();
                 img.src = pathPrefix + prefixName + Preload.pad(i, pad) + '.' + postfix;

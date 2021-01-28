@@ -1,3 +1,5 @@
+import '../less/style.less';
+
 import '../js/lib/mmd-plugin.min.1.0.2';
 import '../js/lib/mmd.videoplayer.min.1.0.1';
 
@@ -14,10 +16,8 @@ var init = function () {
     var visitorsPageBack = function () {
         pagePool.visitorsView = pagePool.visitorsView || new VisitorsViewController();
         var visitorsView = pagePool.visitorsView;
-        // visitorsView.show();
         visitorsView.load();
     };
-
     visitorsPageBack();
 };
 
