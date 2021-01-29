@@ -77,7 +77,6 @@ window.replace = function (number, el) {
 };
 // 加载页对象
 var VisitorsViewController = function () {
-    // PTTSendClick('page-visitors', 'load-start', '开始加载');
     // 公共变量
     var _that = this;
 
@@ -88,14 +87,13 @@ var VisitorsViewController = function () {
     _private.isInit = false;
 
     // 是否播放背景音乐
-    _private.isPlay = false;
+    _private.isAudioPlay = false;
 
     // index
     const frameWrap = $('.m-frame'); // 弹框蒙层
     // frame
     const relusButton = $('.btn-relus'); // 规则按钮
     const hidFrame = $('.btn-hide-frame');
-    // visitors
     // 初始化，包括整体页面
     _private.init = function () {
         if (_private.isInit === true) {
@@ -103,16 +101,16 @@ var VisitorsViewController = function () {
         }
         initProject();
         // 页面加载完成
-        _private.gload = new Config.Preload(Config.pageImgs);
+        _private.gload = new Config.Preload(Config.visitorsImgs);
         _private.gload.onload = function () {
             _that.show();
             _private.isTapStart = false;
             // 播放背景音乐
             $('.m-visitors').click(() => {
-                if (!_private.isPlay) {
+                if (!_private.isAudioPlay) {
                     var audio = document.getElementById('audio');
                     audio.play();
-                    _private.isPlay = true;
+                    _private.isAudioPlay = true;
                 };
             });
         };

@@ -56,11 +56,12 @@ var initProject = function () {
         script.src = require('../../lib/vconsole.min.js');
     }
 };
+// 初始化视频
 function initVideo () {
     var videoPlayer = new MMD.VideoPlayer(
         {
             videoElement: document.getElementById('video'),
-            src: mediaURLData['7701'],
+            src: '../../../media/vh.mp4',  // 从视频地址池获取到的地址   mediaURLData['7701']
             loop: false,
             muted: false,
             poster: '',
@@ -82,8 +83,10 @@ function initVideo () {
     return videoPlayer;
 };
 
-const videoPage = $('.m-video');
-const indexPage = $('.m-index');
+const loadMod = $('.m-loading'); // 加载模块
+const videoMod = $('.m-video'); // 视频模块
+const indexMod = $('.m-index'); // 主页模块
+const loadProgress = $('.move'); // 加载进度条
 // 视频页按钮
 const startButton = $('.start-btn');
 const skipButton = $('.btn-skip');
@@ -91,9 +94,13 @@ const openButton = $('.btn-open');
 const helpButton = $('.btn-help');
 // index
 const backButton = $('.btn-back'); // 返回按钮
-const frameWrap = $('.m-frame'); // 弹框蒙层
 
-const relusButton = $('.btn-relus'); // 规则按钮
+// 视频
+const videoController = initVideo();
+const video = videoController.videoElement;
+// 背景音频
+const audio = document.getElementById('audio');
+
 // 加载页对象
 var IndexViewController = function () {
     // 公共变量
@@ -101,43 +108,38 @@ var IndexViewController = function () {
     // 私有变量
     var _private = {};
 
-    _private.pageEl = $('.m-loading');
+    _private.pageEl = loadMod;
+
     // 是否第一次进入
     _private.isNewUser = false;
-    // 是否点击开门
-    _private.isTapOpen = false;
     // 是否点击回看视频, 判断后面视频播放完成是否还需要弹框
     _private.isBackVideo = false;
     // 是否在播放背景音乐
     _private.isAudioPlay = false;
-    // 是否点击的计时器
-    _private.coutDown = false;
+    // 是否开门，的计时器
+    _private.isOpen = false;
+    // 是否助力，的计时器
+    _private.isHelp = false;
 
     _private.isInit = false;
-    // 视频
-    _that.video = initVideo();
-    const videoElement = _that.video.videoElement;
-    // 背景音频
-    const audio = document.getElementById('audio');
     // 初始化，包括整体页面
     _private.init = function () {
         if (_private.isInit === true) {
             return;
         }
         initProject();
+        // 全局绑定点击事件，触发播放背景音乐
         $('.m-index').click(() => {
             if (!_private.isAudioPlay) {
-                console.log('音频播');
                 audio.play();
                 _private.isAudioPlay = true;
             };
         });
         // 加载体出现在页面上
-        _private.processLineEl = $('.move');
         _private.gload = new Config.Preload(Config.pageImgs);
         _private.gload.onloading = function (p) {
             let per = 100 - p;
-            _private.processLineEl.css('marginLeft', -per + '%');
+            loadProgress.css('marginLeft', -per + '%');
         };
         // 是否新用户
         window.canNewUser = function canNewUser (user) {
@@ -151,143 +153,130 @@ var IndexViewController = function () {
         };
         // 页面加载完成
         _private.gload.onload = function () {
-            // PTTSendClick('page', 'load-end', '加载结束');
-            _private.hieprogress();
-            $('.m-loading').show(); // 这里是显示loading 页
+            _private.hieprogressText();
             startButton.show();
-            _private.isTapStart = false;
             // 点击拿红包按钮
             startButton.click((event) => {
-                _private.isTapStart = true;
-                _that.video.play();
-                videoElement.addEventListener('timeupdate', _private.repea, false);
+                videoController.play();
+                _private.isStartPlay = false; // 是否开始播放
+                video.addEventListener('timeupdate', _private.videoPlay, false);
             });
         };
-        // 视频播放事件函数
-        _private.repea = function () {
-            if (videoElement.currentTime > 0.3) { // 视频大于0.3秒时 视频模块出现，开始按钮消失
-                videoPage.show();
-                _that.hide();
-                startButton.hide();
-                helpButton.hide();
+        // 视频播放
+        _private.videoPlay = function () {
+            if (video.currentTime >= 0.4 && !_private.isStartPlay) { // 视频大于0.3秒时 视频模块出现，开始按钮消失
+                videoMod.show();
+                _private.indexHide();
+                loadMod.hide();
+                // button 显示出来
                 skipButton.show();
-                indexPage.hide();
+                _private.isStartPlay = true;
             }
-            if (videoElement.currentTime >= 17.5) { // 当视频大于 17.5秒时开门按钮显示出来
+            if (video.currentTime >= 17.5) { // 当视频大于 17.5秒时开门按钮显示出来
                 openButton.show();
             }
-            if (videoElement.currentTime >= 18.9) { // 当视频大于 18.9秒时重复播放
-                if (!videoElement.muted) {
-                    videoElement.muted = true;
+            if (video.currentTime >= 22.0 && !video.muted) { // 循环播放
+                video.muted = true; // 静音
+                video.currentTime = 18.0;
+                // 四秒后不点击自动进入
+                if (!_private.isOpen) {
+                    _private.isOpen = setTimeout(() => {
+                        _private.openDoor();
+                        _private.isOpen = null;
+                        console.log('自动开门');
+                        video.removeEventListener('timeupdate', _private.videoPlay, false);
+                    }, 4000);
                 }
-                videoElement.currentTime = 18.0;
             }
-            // 用户没有点击，三秒后自动跳转
-            if (videoElement.currentTime > 18 && !_private.isTapOpen) {
-                _private.isTapOpen = true;
-                setTimeout(() => {
-                    videoElement.removeEventListener('timeupdate', _private.repea, false);
-                    if (videoElement.muted) {
-                        videoElement.muted = false;
-                    }
-                    openButton.hide();
-                    videoElement.addEventListener('timeupdate', _private.showHelp, false);
+        };
+        // 跳过
+        skipButton.click(() => {
+            video.removeEventListener('timeupdate', _private.videoPlay, false);
+            video.currentTime = 54;
+            skipButton.hide();
+            openButton.hide();
+            // setTimeout(() => {
+            //     helpButton.show();
+            // }, 500);
+            video.addEventListener('timeupdate', _private.videoEnd, false);
+        });
+        // 开门
+        _private.openDoor = function () {
+            video.removeEventListener('timeupdate', _private.videoPlay, false);
+            video.currentTime = 23.0;
+            video.muted = false;
+            openButton.hide();
+            video.addEventListener('timeupdate', _private.videoEnd, false);
+        };
+        // 按钮-开门
+        openButton.click(() => {
+            // 清除定时器 1
+            clearTimeout(_private.isOpen);
+            _private.openDoor();
+        });
+
+        // 按钮-助力
+        helpButton.click((event) => {
+            // 清除定时器
+            clearTimeout(_private.isHelp);
+            _private.indexShow();
+        });
+
+        // 按钮-回播视频
+        backButton.click((event) => {
+            video.currentTime = 0;
+            videoController.play();
+            audio.pause();
+            // 视频播放初始化
+            _private.isStartPlay = false;
+            video.addEventListener('timeupdate', _private.videoPlay, false);
+            // 阻止事件冒泡
+            event.stopPropagation();
+        });
+        // 视频播放结尾的监听
+        _private.videoEnd = function () {
+            if (video.currentTime >= 53.02) {
+                skipButton.hide();
+                helpButton.show();
+            }
+            if (video.currentTime >= 55.5 && !_private.isHelp) {
+                // 用户4秒没有点击助力，自动进入
+                console.log(video.currentTime, _private.isHelp);
+                _private.isHelp = setTimeout(() => {
+                    _private.indexShow();
+                    _private.isHelp = null;
+                    console.log('自动助力');
+                    video.removeEventListener('timeupdate', _private.videoEnd, false);
                 }, 4000);
             }
         };
 
-        // 视频页按钮
-        _private.videoPageController = function () {
-            skipButton.show();
-             // 点击跳过button
-            skipButton.click(() => {
-                videoElement.removeEventListener('timeupdate', _private.repea, false);
-                videoElement.addEventListener('timeupdate', _private.showHelp, false);
-                videoElement.currentTime = 50;
-                skipButton.hide();
-                openButton.hide();
-                setTimeout(() => {
-                    helpButton.show();
-                }, 500);
-            });
-            openButton.click(() => {
-                // PTTSendClick('btn', 'open-btn', '召唤门神');
-                videoElement.removeEventListener('timeupdate', _private.repea, false);
-                if (videoElement.muted) {
-                    videoElement.muted = false;
-                }
-                openButton.hide();
-            });
-            _private.showHelp = function () {
-                if (videoElement.currentTime >= 50.02) {
-                    skipButton.hide();
-                    helpButton.show();
-                }
-                if (videoElement.currentTime >= 52 && !_private.coutDown) {
-                    if (!_private.isAudioPlay) {
-                        audio.play();
-                        _private.isAudioPlay = true;
-                    }
-                    // 用户4秒没有点击助力，自动进入
-                    _private.coutDown = setTimeout(() => {
-                        helpButton.hide();
-                        videoPage.hide();
-                        indexPage.show();
-                        if (!_private.isBackVideo && _private.isNewUser) {
-                            _private.isBackVideo = true;
-                            window.videoEndFrame && window.videoEndFrame();
-                        }
-                    }, 4000);
-                }
-            };
-            helpButton.click((event) => {
-                // 清除定时器
-                clearTimeout(_private.coutDown);
-                _private.coutDown = false;
-                helpButton.hide();
-                videoPage.hide();
-                indexPage.show();
-                videoElement.removeEventListener('timeupdate', _private.showHelp, false);
+         // 主页显示出来
+        _private.indexShow = function () {
+            indexMod.show();
+            helpButton.hide();
+            videoMod.hide();
+            console.log(_private.isAudioPlay);
+            if (!_private.isAudioPlay) {
                 // 播放音频
-                if (!_private.isAudioPlay) {
-                    audio.play();
-                    _private.isAudioPlay = true;
-                }
-                if (!_private.isBackVideo && _private.isNewUser) {
-                    _private.isBackVideo = true;
-                    window.videoEndFrame && window.videoEndFrame();
-                }
-            });
+                console.log(audio.play, '音频');
+                audio.play();
+                _private.isAudioPlay = true;
+            }
+            // 是否是回看视频状态 与 老用户状态
+            if (!_private.isBackVideo && _private.isNewUser) {
+                _private.isBackVideo = true;
+                window.videoEndFrame && window.videoEndFrame();
+            }
+            video.removeEventListener('timeupdate', _private.videoEnd, false);
         };
 
-        // 主页按钮
-        _private.indexPageController = function () {
-            // 回播视频
-            backButton.click((event) => {
-                console.log('回拨');
-                videoElement.currentTime = 0;
-                audio.pause();
-                _private.isAudioPlay = false;
-                _that.video.play();
-                videoElement.addEventListener('timeupdate', _private.repea, false);
-                // 阻止事件冒泡
-                event.stopPropagation();
-            });
-            $('.btn-checkDet').click(() => {
-                frameWrap.show();
-                $('.friend-wrap').show();
-            });
-            // 显示规则
-            relusButton.click((event) => {
-                // PTTSendClick('btn', 'show-relus', '显示规则弹框');
-                frameWrap.show();
-                $('.relus-wrap').show();
-            });
+        // 主页隐藏
+        _private.indexHide = function () {
+            indexMod.hide();
+            // 音频播放状态重置
+            _private.isAudioPlay = false;
         };
-        // 绑定主态页事件
-        _private.indexPageController();
-        // 视频页事件
-        _private.videoPageController();
 
         _private.gload.onfail = function (msg) {
             console.log(msg);
@@ -295,7 +284,8 @@ var IndexViewController = function () {
 
         _private.isInit = true;
     };
-    _private.hieprogress = function () {
+    // 隐藏加载条文字
+    _private.hieprogressText = function () {
         const progressText = $('.progress_text');
         progressText.hide();
     };

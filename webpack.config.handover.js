@@ -56,7 +56,7 @@ module.exports = function () {
                             {
                                 loader: 'css-loader',
                                 options: {
-                                    minimize: true  // css压缩，不需要时 false
+                                    minimize: false // css压缩，不需要时 false
                                 }
                             },
                             {

@@ -1,4 +1,4 @@
-import '../less/style.less';
+import '../less/visitors.less';
 
 import '../js/lib/mmd-plugin.min.1.0.2';
 import '../js/lib/mmd.videoplayer.min.1.0.1';

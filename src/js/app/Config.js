@@ -364,5 +364,50 @@ Config.pageImgs = {
         */
     ]
 };
+// 客态页加载图片
+Config.visitorsImgs = {
+    imgs: [
+        {
+            name: 'vis_bg',
+            url: require('../../img/visitors/vis_bg.png')
+        },
+        {
+            name: 'friend_list',
+            url: require('../../img/visitors/friend_list.png')
+        },
+        {
+            name: 'invitation_btn',
+            url: require('../../img/visitors/invitation_btn.png')
+        },
+        {
+            name: 'cen_title',
+            url: require('../../img/visitors/cen_title.png')
+        },
+        {
+            name: 'help_friend_btn',
+            url: require('../../img/visitors/help_friend_btn.png')
+        },
+        {
+            name: 'avatar',
+            url: require('../../img/visitors/avatar.png')
+        },
+        {
+            name: 'top_title',
+            url: require('../../img/visitors/top_title.png')
+        },
+        {
+            name: 'invitation_tip',
+            url: require('../../img/visitors/invitation_tip.png')
+        },
+        {
+            name: 'frame_bg',
+            url: require('../../img/frame/frame_bg.png')
+        },
+        {
+            name: 'mesk_bg',
+            url: require('../../img/frame/mesk_bg.png')
+        }
+    ]
+};
 
 module.exports = Config;

@@ -11,7 +11,7 @@
     <meta name="robots" content="all">
     <meta name="author" content="Tencent-CP">
     <meta name="Copyright" content="Tencent">
-    <meta name="Keywords" content="乱世王者, 门神, 现金, 裂变, 年兽, 打年兽">
+    <meta name="Keywords" content="乱世王者, 门神, 现金, 裂变, 年兽, 打年兽, 现金">
     <meta id="share-description" itemprop="description" name="Description" content="乱世王者-门神现金裂变">
     <meta id="share-name" itemprop="name" content="">
     <meta id="share-image" itemprop="image" content="">
@@ -69,13 +69,13 @@
                 </div>
                 <div class="m-video abcter sizcont hide">
                     <div>
-                        <div style="position: absolute;" class="video-box">
-                            <video id="video" class="video" style="display:none;" preload="auto" webkit-playsinline="" playsinline="" x5-video-player-type="h5-page"></video>
+                        <div style="position: absolute;" class="video-box abcter">
+                            <video id="video" class="video abcter" style="display:none;" preload="auto" webkit-playsinline="" playsinline="" x5-video-player-type="h5-page"></video>
                         </div>
                     </div>
                     <div class="vidoe-container abcter sizcont">
                         <div class="btn-start abcter hide"></div>
-                        <div class="btn-skip abs sizcover hide"></div>
+                        <div class="btn-skip abcter sizcover hide"></div>
                         <div class="btn-open abcter sizcont hide"></div>
                         <div class="btn-help abcter sizcont hide">
                             <div class="btn-help-ani"></div>
@@ -185,7 +185,7 @@
                     <!-- new_user_reward  弹窗-新用户下载得奖励 -->
                     <div class="new-user-reward-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
-                        <div class="receive btn-hide button abcter sizcover">
+                        <div class="confirm btn-hide button abcter sizcover">
                             <a href="JavaScript:lotteryZero();" class="link"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
@@ -193,7 +193,7 @@
                     <!-- 老用户看完动画奖励弹窗  -->
                     <div class="old-user-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
-                        <div class="receive btn-hide button abcter sizcover">
+                        <div class="confirm btn-hide button abcter sizcover">
                             <a href="JavaScript:lotteryZero();" class="link"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
@@ -250,7 +250,7 @@
                      <div class="game-role-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="download btn-hide button abcter sizcover">
-                            <a href="" class="link"></a>
+                            <a href="JavaScript:hideFrame();" class="link"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -270,16 +270,15 @@
                                 </text>
                                 <h6 class="permit-scroll">【活动时间】</h6>
                                 <text class="text-content permit-scroll" selectable="true">
-                                    2021年X月X日至2021年X月X日
+                                    2021年2.5日——2021.2.20日
                                 </text>
                                 <h6>【参与方法】</h6>
                                 <text class="text-content permit-scroll" selectable="true">
                                     （1）本活动限微信、QQ用户参加；活动奖励每日名额有限，先到先得，如用户达到规定助力值，即可获得对应奖励。如当日奖励名额发放完毕，用户可在次日（活动期限内）重新返回本H5进行奖励领取/抽奖；<br>
                                     （2）进入本H5并观看完引入动画后，用户将获得初始助力值888。点击“助力门神”按钮，将提示用户获得游戏礼包及现金红包。《乱世王者》新用户可下载并登录游戏，再回到本H5领取红包及游戏礼包奖励；老用户可进行游戏登录，领取游戏内大礼包奖励，并获得100-200助力值。用户也可直接进入活动页面，用户在奖励活动时间内可发起活动以获取奖励，若奖励活动结束则无法获取；<br>
                                     （3）用户进入活动页面后，可查看自身当前助力值、获取对应奖励的助力值差值、对应奖励、好友助力榜。助力值分为三个档位，分别为2000、8888、10000。用户达到2000，可领取现金红包15元（QQ用户获得等值Q币）；用户达到8888，可获得《乱世王者》门神君主形象（30天）、橙色将魂*3，寻龙令*8，高级行军加速*8；用户达到10000，可获得现金红包28元、现金红包88元、现金红包888元、门神君主形象（60天）抽奖机会。用户可以通过邀请好友助力提高助力值（随机生成10-15），若好友通过点击用户链接并进行助力及游戏下载，则可生成200-400的更高助力值；<br>
-                                    （4）用户参与活动后可邀请好友助力时间为XXX，超出时间后好友将无法助力；<br>
-                                    （5）每位用户最多可以帮助1位好友助力；<br>
-                                    （6）微信用户获得现金红包可在“微信钱包”查看；QQ用户红包将以等值Q币形式获得。<br>
+                                    （4）每位用户最多可以帮助1位好友助力；<br>
+                                    （5）微信用户获得现金红包可在“微信钱包”查看；QQ用户红包将以等值Q币形式获得。<br>
                                 </text>
                                 
                                 <h6>【注意事项】</h6>
@@ -293,19 +292,19 @@
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
                     <!-- 领奖框 -->
-                    <!-- 2000助力值    弹窗-获得15元礼包-->
+                    <!-- 2000助力值    弹窗-获得15元礼包 confirm-->
                     <div class="reward-2000 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
-                        <div class="receive btn-hide button abcter sizcover">
-                            <a href="" class="link"></a>
+                        <div class="confirm btn-hide button abcter sizcover">
+                            <a href="JavaScript:hideFrame();" class="link"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
                     <!-- 8888助力值   弹窗-获得游戏限定豪华礼包-->
                     <div class="reward-8888 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
-                        <div class="receive btn-hide button abcter sizcover">
-                            <a href="" class="link"></a>
+                        <div class="confirm btn-hide button abcter sizcover">
+                            <a href="JavaScript:hideFrame();" class="link"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -314,32 +313,33 @@
                     <!-- 28元现金劵 -->
                     <div class="money-28 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
-                        <div class="receive btn-hide button abcter sizcover">
-                            <a href="" class="link"></a>
+                        <div class="confirm btn-hide button abcter sizcover">
+                            <a href="JavaScript:hideFrame();" class="link"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
                     <!-- 88元现金劵 -->
                     <div class="money-88 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
-                        <div class="receive btn-hide button abcter sizcover">
-                            <a href="" class="link"></a>
+                        <div class="confirm btn-hide button abcter sizcover">
+                            <a href="JavaScript:hideFrame();" class="link"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
                     <!-- 100元京东劵 -->
-                    <div class="money-100 frame abcter siz hide">
+                    
+                    <!-- <div class="money-100 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
-                        <div class="receive btn-hide button abcter sizcover">
+                        <div class="confirm btn-hide button abcter sizcover">
                             <a href="" class="link"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
-                    </div>
+                    </div> -->
                     <!-- 888元现金劵 -->
                     <div class="money-888 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
-                        <div class="receive btn-hide button abcter sizcover">
-                            <a href="" class="link"></a>
+                        <div class="confirm btn-hide button abcter sizcover">
+                            <a href="JavaScript:hideFrame();" class="link"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -496,6 +496,7 @@
             prizeTwo: $('.prize-two'), // 8888奖励按钮
             prizeThree: $('.prize-three'), // 10000奖励按钮
             hidFrame: $('.btn-hide-frame'), // 隐藏弹框按钮
+            checkDetail: $('.btn-checkDet'), // 点击查看详情
         },
         frames: {
             shareFrame: $('.share'),  // 分享框
@@ -542,10 +543,12 @@
     
     // 三个奖品点击弹窗
     gloadEls.buttons.prizedOne.click(() => {
-        showFrame(gloadEls.frames.reward_2000_Frame);
+        reward(1)
+        // showFrame(gloadEls.frames.reward_2000_Frame);
     })
     gloadEls.buttons.prizeTwo.click(() => {
-        showFrame(gloadEls.frames.reward_8888_Frame);
+        reward(2)
+        // showFrame(gloadEls.frames.reward_8888_Frame);
     })
     gloadEls.buttons.prizeThree.click(() => {
         showFrame(gloadEls.frames.rouletteFrame);
@@ -560,14 +563,21 @@
 
     // 邀请好友 分享按钮
     gloadEls.buttons.shareButton.click(() => {
-        showFrame(gloadEls.frames.shareFrame);
+        share() 
+        // showFrame(gloadEls.frames.shareFrame);
     })
     // 隐藏分享
     gloadEls.frames.shareFrame.click(() => {
         hideFrame();
     })
-    const shareButton = $('.share-friend');
-
+    // 显示好友列表
+    gloadEls.buttons.checkDetail.click(() => {
+        showFrame(gloadEls.frames.friendFrame);
+    })
+    // 显示规则
+    gloadEls.buttons.relusButton.click(() => {
+        showFrame(gloadEls.frames.relusFrame);
+    })
     // 自定义文本框
     function showMessage (mess) {
         var messageFrame = gloadEls.frames.messageFrame
@@ -577,7 +587,9 @@
 
     window.setProgress(10000, 0);    // 设置任务进度百分比
 
-    window.canNewUser(false);  
+    // 是否第一次进入
+    window.canNewUser(true);
+
     // 视频播放完 弹窗控制函数
     window.videoEndFrame = function () {
         if(BASE.initData.userType.userType == 0){
@@ -595,48 +607,44 @@
      $('.panel-btn').on('click', function (event) {
         event.preventDefault();
         if (panel.playing) return;
+        reward(3)
         // 例 -----------------   setTimeout代替的是异步请求
-        setTimeout(function () {
-            var n = Math.floor(Math.random() * 5);
-            /*请求到数据后调用此方法   window.panel.playto(n, function() {})  
-             n = 0（888元现金）   n=1 (六十天门神角色)    n=2 (88元现金)   n=3 (28元现金)    n=4 (没有中奖)
-             */
-            window.panel.playto(n, function () {
-            var rouletteFrame = $('.roulette-wrap');
-            var frameWrap = $('.m-frame');
-            rouletteFrame.hide();
-            switch (n) {
-                case 0:
-                    var money888 = $('.money-888'); // 888元现金
-                    money888.show();
-                    frameWrap.show();
-                    break;
-                case 1:
-                    var gameRole = $('.game-role-wrap');  // 六十天门神角色
-                    gameRole.show();
-                    frameWrap.show();
-                    break;
-                case 2:
-                    var money88 = $('.money-88'); // 88元现金
-                    money88.show();
-                    frameWrap.show();
-                    break;
-                case 3:
-                    var money28 = $('.money-28'); // 28元现金
-                    money28.show();
-                    frameWrap.show();
-                    break;
-                case 4:
-                    var none = $('.none-wrap'); // 没有中奖
-                    none.show();
-                    frameWrap.show();
-                    break;
-                default:
-                    $('.none-wrap').show(); // 没有中奖
-                    frameWrap.show();
-            }
-        });
-        }, 300);
+        // setTimeout(function () {
+        //     var n = Math.floor(Math.random() * 5);
+        //     /*请求到数据后调用此方法   window.panel.playto(n, function() {})  
+        //      n = 0（888元现金）   n=1 (六十天门神角色)    n=2 (88元现金)   n=3 (28元现金)    n=4 (没有中奖)
+        //      */
+        //     window.panel.playto(n, function () {
+        //     var rouletteFrame = $('.roulette-wrap');
+        //     var frameWrap = $('.m-frame');
+        //     rouletteFrame.hide();
+        //     switch (n) {
+        //         case 0:
+        //             var money888 = $('.money-888'); // 888元现金
+        //             showFrame(money888);
+        //             break;
+        //         case 1:
+        //             var gameRole = $('.game-role-wrap');  // 六十天门神角色
+        //             showFrame(gameRole);
+        //             break;
+        //         case 2:
+        //             var money88 = $('.money-88'); // 88元现金
+        //             showFrame(money88);
+        //             break;
+        //         case 3:
+        //             var money28 = $('.money-28'); // 28元现金
+        //             showFrame(money28);
+        //             break;
+        //         case 4:
+        //             var none = $('.none-wrap'); // 没有中奖
+        //             showFrame(none);
+        //             break;
+        //         default:
+        //             var none = $('.none-wrap'); // 没有中奖
+        //             showFrame(none);
+        //     }
+        // });
+        // }, 300);
     });
 </script>
 <script>

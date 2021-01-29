@@ -5,7 +5,7 @@
 *  复制到相应的文件夹
 *  引入的less会对less进行编译存放到css文件夹
 * */
-import '../less/style.less';
+import '../less/index.less';
 
 /** The animate() method */
 import './util/fx';
@@ -42,7 +42,7 @@ function foramtTelNum (num) {
     }
     return content;
 };
-window.replace = function (number, el) {
+window.replaceImg = function (number, el) {
     const MyValue = $(el);
     let imgTarget = foramtTelNum(number);
     MyValue.empty();
@@ -50,14 +50,12 @@ window.replace = function (number, el) {
 };
 // 设置任务进度百分比
 window.setProgress = function (maxNum = 10000, myValue) {
-    // const stateArr = $('.state');
-    let max = maxNum; // 终点积分
     let val = myValue; // 现用积分值
-    let per = percentage(val, max);
+    let per = 0;
     let progressWidth = 0;
     let diff = 0;
     // let coundWidth = 284; // 总长度
-    window.replace(val, '.my-value');
+    window.replaceImg(val, '.my-value');
     if (val >= 0 && val < 2000) {
         per = percentage(val, 2000);
         console.log(per);
