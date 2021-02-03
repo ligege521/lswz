@@ -12,13 +12,10 @@
             if (!winWidth) return;
             var fontSize;
             if (winWidth < winHeight) {
-                console.log((winWidth / winHeight) > (width / height));
                 if ((winWidth / winHeight) > (width / height)) {
                     fontSize = (rootValue * (winHeight / height));
-                    console.log('aaa', fontSize);
                 } else {
                     fontSize = (rootValue * (winWidth / width));
-                    console.log('bbb', fontSize);
                 }
             } else {
                 if ((winWidth / winHeight) > (height / width)) {

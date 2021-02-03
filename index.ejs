@@ -20,8 +20,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     
     <% if (process.env.NODE_ENV === 'handover') { %>
-        <!-- <script src="../ossweb-img/js/lib/mmd-plugin.min.1.0.2.js"></script> -->
-        <script src="<%=require ('./src/js/lib/mmd-plugin.min.1.0.2.js')%>"></script>
+        <script src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/js/lib/mmd-plugin.min.1.0.2.js"></script>    
     <% } else { %>
         <script src="<%=require ('./src/js/lib/mmd-plugin.min.1.0.2.js')%>"></script>
     <% } %>
@@ -33,11 +32,7 @@
     <!-- rem布局初始化设置end -->
 
     <% if (process.env.NODE_ENV === 'handover') { %>
-        <!-- <link href="../ossweb-img/main.css" rel="stylesheet"> -->
-        <% for (var css in htmlWebpackPlugin.files.css) { %>
-            <% var cssFile = htmlWebpackPlugin.files.css[css].substr(htmlWebpackPlugin.files.publicPath.length); %>
-            <link href="<%= cssFile %>" rel="stylesheet">
-        <% } %>
+        <link href="//game.gtimg.cn/images/slg/act/4876/a20210119msu/main.css" rel="stylesheet">
     <% } else { %>
         <% for (var css in htmlWebpackPlugin.files.css) { %>
             <% var cssFile = htmlWebpackPlugin.files.css[css].substr(htmlWebpackPlugin.files.publicPath.length); %>
@@ -155,6 +150,7 @@
                             <!-- 点击查看详情 -->
                             <div class="btn-checkDet abcter" ontouchend="PTTSendClick('btn','btn-checkDet','查看好友助力榜')"></div>
                         </div>
+                        <div class="btn-back-game abs sizcover" id="backToGame"></div>
                     </div>
                 </div>
 
@@ -183,7 +179,7 @@
                     <div class="new-user-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="download btn-hide button abcter sizcover">
-                            <a href="" class="link" ontouchend="PTTSendClick('btn','btn-download','新用户下载')"></a>
+                            <a href="https://slg.qq.com/zlkdatasys/mct/d/play.shtml" class="link" ontouchend="PTTSendClick('btn','btn-download','新用户下载')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -257,14 +253,14 @@
                             </div>
                         </div>
                         <div class="download button abcter sizcover">
-                            <a href="" class="link" ontouchend="PTTSendClick('btn','btn-download','为好友助力-下载游戏')"></a>
+                            <a href="https://slg.qq.com/zlkdatasys/mct/d/play.shtml" class="link" ontouchend="PTTSendClick('btn','btn-download','为好友助力-下载游戏')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
                      <!-- game_role   弹窗-获得门神君主形象 -->
                      <div class="game-role-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
-                        <div class="download btn-hide button abcter sizcover">
+                        <div class="confirm btn-hide button abcter sizcover">
                             <a href="JavaScript:hideFrame();" class="link" ontouchend="PTTSendClick('btn','btn-download','门神君主')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
@@ -456,6 +452,7 @@
     <script src="//game.gtimg.cn/images/js/mmdVideoPlayer/mmd.videoplayer.min.1.0.1.js" charset="utf-8"></script>
     <script src="//ossweb-img.qq.com/images/js/comm/showDialog.min.js"></script>
     <script src="https://game.gtimg.cn/images/ulink/ulinksdk/vconsole.min.js"></script>
+     <script src="https://tiem-cdn.qq.com/slugteam/sdk/browser_adapt.js"></script>
     <script>
         // TGMobileShare({
         // shareTitle:'乱世王者', //不设置或设置为空时，页面有title，则调取title
@@ -480,11 +477,7 @@
         if(typeof(pgvMain)=='function')pgvMain();//千万不能忘记！
     </script>
     <% if (process.env.NODE_ENV === 'handover') { %>
-        <!-- <script type="text/javascript" src="../ossweb-img/main.js"></script> -->
-        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-            <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry.substr(htmlWebpackPlugin.files.publicPath.length); %>
-            <script type="text/javascript" src="<%= jsFile %>"></script>
-        <% } %>
+        <script type="text/javascript" src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/main.js"></script>
     <% } else { %>
         <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
             <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry.substr(htmlWebpackPlugin.files.publicPath.length); %>
@@ -517,6 +510,7 @@
             prizeThree: $('.prize-three'), // 10000奖励按钮
             hidFrame: $('.btn-hide-frame'), // 隐藏弹框按钮
             checkDetail: $('.btn-checkDet'), // 点击查看详情
+            backGame: $('.btn-back-game'),   // 返回游戏按钮
         },
         frames: {
             shareFrame: $('.share'),  // 分享框
@@ -608,9 +602,7 @@
 
     window.setProgress(10000, 0);    // 设置任务进度百分比
 
-    // 是否新用户，  ture || flase    ture 为新用户， flase 老用户
-    window.canNewUser(false);
-
+    window.canNewUser(false); 
     // 视频播放完 弹窗控制函数
     window.videoEndFrame = function () {
         if(BASE.initData.userType.userType == 0){

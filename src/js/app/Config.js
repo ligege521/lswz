@@ -339,6 +339,26 @@ Config.pageImgs = {
         {
             name: 'start_btn',
             url: require('../../img/button/start_btn.png')
+        },
+        {
+            name: 'share_1',
+            url: require('../../img/share_img/share_1.jpg')
+        },
+        {
+            name: 'share_2',
+            url: require('../../img/share_img/share_2.jpg')
+        },
+        {
+            name: 'share_3',
+            url: require('../../img/share_img/share_3.jpg')
+        },
+        {
+            name: 'share_4',
+            url: require('../../img/share_img/share_4.jpg')
+        },
+        {
+            name: 'share_5',
+            url: require('../../img/share_img/share_5.jpg')
         }
     ],
     sprites: [

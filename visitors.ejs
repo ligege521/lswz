@@ -26,11 +26,7 @@
     <!-- rem布局初始化设置end -->
 
     <% if (process.env.NODE_ENV === 'handover') { %>
-        <!-- <link href="../ossweb-img/visitors.css" rel="stylesheet"> -->
-        <% for (var css in htmlWebpackPlugin.files.css) { %>
-            <% var cssFile = htmlWebpackPlugin.files.css[css].substr(htmlWebpackPlugin.files.publicPath.length); %>
-            <link href="<%= cssFile %>" rel="stylesheet">
-        <% } %>
+        <link href="//game.gtimg.cn/images/slg/act/4876/a20210119msu/visitors.css" rel="stylesheet">
     <% } else { %>
         <% for (var css in htmlWebpackPlugin.files.css) { %>
             <% var cssFile = htmlWebpackPlugin.files.css[css].substr(htmlWebpackPlugin.files.publicPath.length); %>
@@ -133,7 +129,7 @@
                             </div>
                         </div>
                         <div class="download button abcter sizcover">
-                            <a href="" class="link" ontouchend="PTTSendClick('btn','btn-download','助力好友-下载游戏')"></a>
+                            <a href="https://slg.qq.com/zlkdatasys/mct/d/play.shtml" class="link" ontouchend="PTTSendClick('btn','btn-download','助力好友-下载游戏')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -212,11 +208,7 @@
         if(typeof(pgvMain)=='function')pgvMain();//千万不能忘记！
     </script>
     <% if (process.env.NODE_ENV === 'handover') { %>
-        <!-- <script type="text/javascript" src="../ossweb-img/visitors.js"></script> -->
-        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-            <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry.substr(htmlWebpackPlugin.files.publicPath.length); %>
-            <script type="text/javascript" src="<%= jsFile %>"></script>
-        <% } %>
+        <script type="text/javascript" src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/visitors.js"></script>
     <% } else { %>
         <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
             <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry.substr(htmlWebpackPlugin.files.publicPath.length); %>
