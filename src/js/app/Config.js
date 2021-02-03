@@ -169,10 +169,6 @@ Config.pageImgs = {
             url: require('../../img/frame/list_title.png')
         },
         {
-            name: 'money_888',
-            url: require('../../img/frame/money_888.png')
-        },
-        {
             name: 'money_2',
             url: require('../../img/frame/money_2.png')
         },
@@ -225,6 +221,10 @@ Config.pageImgs = {
             url: require('../../img/frame/point_2000.png')
         },
         {
+            name: 'point_8888',
+            url: require('../../img/frame/point_8888.png')
+        },
+        {
             name: 'no_found_role',
             url: require('../../img/frame/no_found_role.png')
         },
@@ -235,10 +235,6 @@ Config.pageImgs = {
         {
             name: 'opt_bg',
             url: require('../../img/frame/opt_bg.png')
-        },
-        {
-            name: 'roulette_bg',
-            url: require('../../img/frame/roulette_bg.png')
         },
         {
             name: 'roulette_btn',
@@ -257,7 +253,7 @@ Config.pageImgs = {
             url: require('../../img/frame/roulette.png')
         },
         {
-            name: 'roulette',
+            name: 'succeed',
             url: require('../../img/frame/succeed.png')
         },
         {
@@ -400,12 +396,48 @@ Config.visitorsImgs = {
             url: require('../../img/visitors/invitation_tip.png')
         },
         {
-            name: 'frame_bg',
-            url: require('../../img/frame/frame_bg.png')
-        },
-        {
             name: 'mesk_bg',
             url: require('../../img/frame/mesk_bg.png')
+        },
+        {
+            name: '0',
+            url: require('../../img/num/0.png')
+        },
+        {
+            name: '1',
+            url: require('../../img/num/1.png')
+        },
+        {
+            name: '2',
+            url: require('../../img/num/2.png')
+        },
+        {
+            name: '3',
+            url: require('../../img/num/3.png')
+        },
+        {
+            name: '4',
+            url: require('../../img/num/4.png')
+        },
+        {
+            name: '5',
+            url: require('../../img/num/5.png')
+        },
+        {
+            name: '6',
+            url: require('../../img/num/6.png')
+        },
+        {
+            name: '7',
+            url: require('../../img/num/7.png')
+        },
+        {
+            name: '8',
+            url: require('../../img/num/8.png')
+        },
+        {
+            name: '9',
+            url: require('../../img/num/9.png')
         }
     ]
 };

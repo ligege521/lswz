@@ -20,7 +20,7 @@ body {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	font-size: 14px;
+	font-size: 13.33vw;
 	-webkit-user-select: none;
 	user-select: none;
 }
@@ -31,8 +31,9 @@ body {
 	-webkit-transform-origin: center center;
 	transform-origin: center center;
 	.m-wrap {
-		width: 100vw;
-		height: 100vh;
+		width: 100%;
+		height: 100%;
+		font-size: 14px;
 		// overflow: hidden;
 		// background-image: url('@{img}index/1.png');
 	}
@@ -46,8 +47,9 @@ body {
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
 	.m-wrap {
-		width: 100vh;
-		height: 100vw;
+		width: 100%;
+		height: 100%;
+		font-size: 14px;
 		// background-image: url('@{img}index/2.png');
 	}
 }
@@ -58,16 +60,18 @@ body {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
 		.m-wrap {
-			width: 100vw;
-			height: 100vh;
+			width: 100%;
+			height: 100%;
+			font-size: 14px;
 		}
 	}
 	.m-vertical {
 		-webkit-transform: rotate(-90deg);
 		transform: rotate(-90deg);
 		.m-wrap {
-			width: 100vh;
-			height: 100vw;
+			width: 100%;
+		height: 100%;
+			font-size: 14px;
 		}
 	}
 }
@@ -119,9 +123,10 @@ body {
 			transition:all 200ms linear;
 			.loading_progress{
 				width: 5.56rem;
-				height: 0.25rem;
-				margin-top: 0.01rem;
+				height: 0.16rem;
+				// margin-top: 0.01rem;
 				background-image: url('../../src/img/loading/progres.png');
+				background-size: 100% 0.16rem;
 			}
 			.progress_header{
 				width: 85px;
@@ -159,8 +164,8 @@ body {
 }
 .m-video{
 	z-index: 3;
-	width: 7.5rem;
-	height: 16rem;
+	width: 100%;
+	height: 100%;
 	overflow: hidden;
 	transform: translate3d(-50%, -50%, 0);
 	.vidoe-container{
@@ -189,7 +194,7 @@ body {
 		width: 1.82rem;
 		height: .64rem;
 		top: 0rem;
-		left: calc(7.5rem- 1.82rem);
+		right: 0rem;
 		background-image: url("@{img}/button/skip.png");
 	}
 	.btn-open{
@@ -508,6 +513,8 @@ body {
 					left: 3.8rem;
 					line-height: 0.6rem;
 					margin-bottom: -0.05rem;
+					box-sizing: border-box;
+					padding-left: 10px;
 					display: flex;
 					.value-img{
 						width: 0.4rem;
@@ -552,7 +559,7 @@ body {
 			background-image: url("@{img}/index/list_bg.png");
 			overflow: scroll;
 			.list-help {
-				width: 3rem;
+				width: 3.1rem;
 				height: 65px;
 				margin-top: 0.5rem;
 				margin-left: 0.5rem;
@@ -564,6 +571,7 @@ body {
 					overflow-y: hidden;
 					overflow-x: scroll;
 					white-space: nowrap;
+					font-size: 14px;
 					.list-box{
 						width: 164px;
 						height: 100%;
@@ -757,7 +765,16 @@ body {
 		}
 	}
 
-	.old-user-wrap{
+	.re-old-user-wrap{
+		.content{
+			width: 4.56rem;
+			height: 2.78rem;
+			margin: 0 auto;
+			background-image: url('@{img}/frame/old_user.png');
+		}
+	}
+
+	.con-old-user-wrap{
 		.content{
 			width: 4.56rem;
 			height: 2.78rem;
@@ -844,10 +861,11 @@ body {
 
 	.game-role-wrap{
 		.content{
-			width: 4.18rem;
-			height: 2.99rem;
+			width: 5.1rem;
+			height: 3.1rem;
 			margin: 0 auto;
 			background-image: url('@{img}/frame/game_role.png');
+			background-size: contain;
 		}
 	}
 

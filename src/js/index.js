@@ -56,12 +56,14 @@ window.setProgress = function (maxNum = 10000, myValue) {
     let diff = 0;
     // let coundWidth = 284; // 总长度
     window.replaceImg(val, '.my-value');
+    // 0 - 2000
     if (val >= 0 && val < 2000) {
         per = percentage(val, 2000);
         console.log(per);
         progressWidth = per / 100 * 35;
         diff = 2000 - val;
     }
+    // 2000 - 8888
     if (val >= 2000 && val < 8888) {
         per = percentage(val - 2000, 8888 - 2000);
         progressWidth = per / 100 * 115 + 35;
@@ -69,6 +71,7 @@ window.setProgress = function (maxNum = 10000, myValue) {
         $('.prize').eq(0).addClass('prize-qualified');
         $('.point-img').eq(0).addClass('point-2000-act');
     }
+    // 8888 - 10000
     if (val >= 8888 && val <= 10000) {
         per = percentage(val - 8888, 10000 - 8888);
         progressWidth = per / 100 * 115 + 110 + 35;
@@ -77,6 +80,7 @@ window.setProgress = function (maxNum = 10000, myValue) {
         $('.point-img').eq(0).addClass('point-2000-act');
         $('.point-img').eq(1).addClass('point-8888-act');
     }
+    // 10000 +
     if (val >= 10000) {
         progressWidth = 284;
         $('.prize').eq(2).addClass('prize-qualified');

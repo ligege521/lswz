@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <![endif]-->
     <title>乱世王者-门神现金裂变</title>
-    <!-- 页面设计：青木文化 | 页面制作：青木文化 | 创建：2021-01-19 -->
+    <!-- 页面设计：青木 | 页面制作：青木 | 创建：2021-01-19 -->
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta name="robots" content="all">
     <meta name="author" content="Tencent-CP">
@@ -20,7 +20,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     
     <% if (process.env.NODE_ENV === 'handover') { %>
-        <script src="../ossweb-img/js/lib/mmd-plugin.min.1.0.2.js"></script>
+        <!-- <script src="../ossweb-img/js/lib/mmd-plugin.min.1.0.2.js"></script> -->
+        <script src="<%=require ('./src/js/lib/mmd-plugin.min.1.0.2.js')%>"></script>
     <% } else { %>
         <script src="<%=require ('./src/js/lib/mmd-plugin.min.1.0.2.js')%>"></script>
     <% } %>
@@ -32,7 +33,11 @@
     <!-- rem布局初始化设置end -->
 
     <% if (process.env.NODE_ENV === 'handover') { %>
-        <link href="../ossweb-img/main.css" rel="stylesheet">
+        <!-- <link href="../ossweb-img/main.css" rel="stylesheet"> -->
+        <% for (var css in htmlWebpackPlugin.files.css) { %>
+            <% var cssFile = htmlWebpackPlugin.files.css[css].substr(htmlWebpackPlugin.files.publicPath.length); %>
+            <link href="<%= cssFile %>" rel="stylesheet">
+        <% } %>
     <% } else { %>
         <% for (var css in htmlWebpackPlugin.files.css) { %>
             <% var cssFile = htmlWebpackPlugin.files.css[css].substr(htmlWebpackPlugin.files.publicPath.length); %>
@@ -73,11 +78,11 @@
                             <video id="video" class="video abcter" style="display:none;" preload="auto" webkit-playsinline="" playsinline="" x5-video-player-type="h5-page"></video>
                         </div>
                     </div>
+                    <div class="btn-skip abs sizcover hide" ontouchend="PTTSendClick('btn','skip-video','跳过视频')"></div>
                     <div class="vidoe-container abcter sizcont">
-                        <div class="btn-start abcter hide"></div>
-                        <div class="btn-skip abcter sizcover hide"></div>
-                        <div class="btn-open abcter sizcont hide"></div>
-                        <div class="btn-help abcter sizcont hide">
+                        <div class="btn-start abcter hide" ontouchend="PTTSendClick('btn','play-video','播放入场动画')"></div>
+                        <div class="btn-open abcter sizcont hide" ontouchend="PTTSendClick('btn','btn-open','点击开门')"></div>
+                        <div class="btn-help abcter sizcont hide" ontouchend="PTTSendClick('btn','btn-help','助力门神')">
                             <div class="btn-help-ani"></div>
                         </div>
                     </div>
@@ -89,20 +94,20 @@
                 <div class="m-index sizcover abcter hide">
                     <div class="container abcter">
                         <div class="btn-back abs sizcover"></div>
-                        <div class="btn-relus abs sizcover"></div>
+                        <div class="btn-relus abs sizcover" ontouchend="PTTSendClick('btn','btn-relus','规则')"></div>
                         <!-- 积分奖品 -->
                         <div class="reward-box">
                             <div class="prize-wrap abs">
-                                <!-- prize-static 未达到状态   prize-qualified 已经到达状态   prize-already 已领取状态 -->
-                                <div class="prize-one prize sizcover prize-static" id="prize1">
+                                <!-- prize-static 未达到状态(未完成)   prize-qualified 已经到达状态(可领取)   prize-already 已领取状态(已领取) 添加 prize-already 类名后，不可被点击 -->
+                                <div class="prize-one prize sizcover prize-static" id="prize1" ontouchend="PTTSendClick('btn','prize-one','领取第一档奖品')">
                                     <div class="prize-15 prize-img abcter sizcover"></div>
                                     <div class="state abcter sizcover"></div>
                                 </div>
-                                <div class="prize-two prize sizcover prize-static" id="prize2">
+                                <div class="prize-two prize sizcover prize-static" id="prize2" ontouchend="PTTSendClick('btn','prize-two','领取第二档奖品')">
                                     <div class="prize-game prize-img abcter sizcover"></div>
                                     <div class="state abcter sizcover"></div>
                                 </div>
-                                <div class="prize-three prize sizcover prize-static" id="prize3">
+                                <div class="prize-three prize sizcover prize-static" id="prize3" ontouchend="PTTSendClick('btn','prize-three','领取第三档奖品')">
                                     <div class="prize-888 prize-img abcter sizcover"></div>
                                     <div class="state abcter sizcover"></div>
                                 </div>
@@ -129,7 +134,7 @@
                             </div>
                             <div class="share-friend siz abcter">
                                 <div class="gift_bag sizcover"></div>
-                                <div class="share_btn sizcover"></div>
+                                <div class="share_btn sizcover" ontouchend="PTTSendClick('btn','share_btn','分享好友')"></div>
                                 <div class="share_mess sizcover"></div>
                             </div>
                         </div>
@@ -138,24 +143,24 @@
                                 <!-- 好友助力榜 -->
                                 <div class="more sizcover abcter"></div>
                                 <div class="scroll-box permit-scroll">
-                                    <img src="<%= require('./src/img/index/act_friend.png') %>" alt="" class="item-help sizcover permit-scroll"></img>
-                                    <img src="<%= require('./src/img/index/friend.png') %>" alt="" class="item-help sizcover permit-scroll"></img>
-                                    <img src="<%= require('./src/img/index/friend.png') %>" alt="" class="item-help sizcover permit-scroll"></img>
-                                    <img src="<%= require('./src/img/index/friend.png') %>" alt="" class="item-help sizcover permit-scroll"></img>
-                                    <img src="<%= require('./src/img/index/friend.png') %>" alt="" class="item-help sizcover permit-scroll"></img>
-                                    <img src="<%= require('./src/img/index/friend.png') %>" alt="" class="item-help sizcover permit-scroll"></img>
-                                    <img src="<%= require('./src/img/index/friend.png') %>" alt="" class="item-help sizcover permit-scroll"></img>
+                                    <!-- <img src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/act_friend.png" alt="" class="item-help sizcover permit-scroll">
+                                    <img src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/friend.png" alt="" class="item-help sizcover permit-scroll">
+                                    <img src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/friend.png" alt="" class="item-help sizcover permit-scroll">
+                                    <img src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/friend.png" alt="" class="item-help sizcover permit-scroll">
+                                    <img src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/friend.png" alt="" class="item-help sizcover permit-scroll">
+                                    <img src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/friend.png" alt="" class="item-help sizcover permit-scroll">
+                                    <img src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/friend.png" alt="" class="item-help sizcover permit-scroll"> -->
                                 </div>
                             </div>
                             <!-- 点击查看详情 -->
-                            <div class="btn-checkDet abcter"></div>
+                            <div class="btn-checkDet abcter" ontouchend="PTTSendClick('btn','btn-checkDet','查看好友助力榜')"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 弹框模块 -->
                 <div class="m-frame absf sizcover hide">
-                    <div class="share abcter hide">
+                    <div class="share abcter hide" ontouchend="PTTSendClick('btn','cancel-share','取消分享')">
                         <div class="share-icon"></div>
                     </div>
                     <!-- 自定义弹框   -->
@@ -163,14 +168,14 @@
                         <div class="message-text abcter sizcover" id="message-text">自定义文本</div>
                         <div class="btn-hide-frame abs sizcont"></div>
                         <div class="confirm button abcter sizcover">
-                            <a href="JavaScript:hideFrame();" class="link"></a>
+                            <a href="JavaScript:hideFrame();" class="link" ontouchend="PTTSendClick('btn','message','弹出消息')"></a>
                         </div>
                     </div>
                     <!-- frist   第一次登录弹框 下载游戏得2元红包-->
                     <div class="frist-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="receive button abcter sizcover">
-                            <a href="" class="link"></a>
+                            <a href="JavaScript:lotteryZero();" class="link" ontouchend="PTTSendClick('btn','btn-receive','2元红包领取按钮')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -178,7 +183,7 @@
                     <div class="new-user-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="download btn-hide button abcter sizcover">
-                            <a href="" class="link"></a>
+                            <a href="" class="link" ontouchend="PTTSendClick('btn','btn-download','新用户下载')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -186,18 +191,28 @@
                     <div class="new-user-reward-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="confirm btn-hide button abcter sizcover">
-                            <a href="JavaScript:lotteryZero();" class="link"></a>
+                            <a href="JavaScript:hideFrame();" class="link" ontouchend="PTTSendClick('btn','btn-confirm','新用户确认')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
-                    <!-- 老用户看完动画奖励弹窗  -->
-                    <div class="old-user-wrap frame abcter siz hide">
+                    <!-- 老用户看完动画 领取奖励弹窗  -->
+                    <div class="re-old-user-wrap frame abcter siz hide">
+                        <div class="content abcter sizcover"></div>
+                        <div class="receive btn-hide button abcter sizcover">
+                            <a href="JavaScript:lotteryZero();" class="link" ontouchend="PTTSendClick('btn','btn-confirm','老用户领取确认')"></a>
+                        </div>
+                        <div class="btn-hide-frame abs sizcover"></div>
+                    </div>
+
+                    <!-- 老用户看完动画 确认领取奖励弹窗 -->
+                    <div class="con-old-user-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="confirm btn-hide button abcter sizcover">
-                            <a href="JavaScript:lotteryZero();" class="link"></a>
+                            <a href="JavaScript:hideFrame();" class="link" ontouchend="PTTSendClick('btn','btn-confirm','老用户领取确认')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
+                    
                     <!-- none    弹窗-今日奖励领完-->
                     <div class="none-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
@@ -207,7 +222,7 @@
                     <div class="no-found-role frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="reset btn-hide button abcter sizcover">
-                            <a href="" class="link"></a>
+                            <a href="" class="link" ontouchend="PTTSendClick('btn','btn-reset','重新选区')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -218,10 +233,10 @@
                         <div class="tip-name abcter">【 我的名字 】</div>
                         <div class="btn-box abcter">
                             <div class="appraisal button sizcover">
-                                <a href="" class="link"></a>
+                                <a href="" class="link" ontouchend="PTTSendClick('btn','btn-appraisal','确认鉴定')"></a>
                             </div>
                             <div class="reset button sizcover">
-                                <a href="" class="link"></a>
+                                <a href="" class="link" ontouchend="PTTSendClick('btn','btn-reset','重新选区')"></a>
                             </div>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
@@ -242,7 +257,7 @@
                             </div>
                         </div>
                         <div class="download button abcter sizcover">
-                            <a href="" class="link"></a>
+                            <a href="" class="link" ontouchend="PTTSendClick('btn','btn-download','为好友助力-下载游戏')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -250,13 +265,13 @@
                      <div class="game-role-wrap frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="download btn-hide button abcter sizcover">
-                            <a href="JavaScript:hideFrame();" class="link"></a>
+                            <a href="JavaScript:hideFrame();" class="link" ontouchend="PTTSendClick('btn','btn-download','门神君主')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
                     <!-- 转盘  抽奖转盘-->
                     <div class="roulette-wrap abcter siz sizcover hide">
-                        <div id="ltpanel" class="panel"></div>
+                        <div id="ltpanel" class="panel" ontouchend="PTTSendClick('btn','btn','抽奖')"></div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
 
@@ -275,9 +290,9 @@
                                 <h6>【参与方法】</h6>
                                 <text class="text-content permit-scroll" selectable="true">
                                     （1）本活动限微信、QQ用户参加；活动奖励每日名额有限，先到先得，如用户达到规定助力值，即可获得对应奖励。如当日奖励名额发放完毕，用户可在次日（活动期限内）重新返回本H5进行奖励领取/抽奖；<br>
-                                    （2）进入本H5并观看完引入动画后，用户将获得初始助力值888。点击“助力门神”按钮，将提示用户获得游戏礼包及现金红包。《乱世王者》新用户可下载并登录游戏，再回到本H5领取红包及游戏礼包奖励；老用户可进行游戏登录，领取游戏内大礼包奖励，并获得100-200助力值。用户也可直接进入活动页面，用户在奖励活动时间内可发起活动以获取奖励，若奖励活动结束则无法获取；<br>
-                                    （3）用户进入活动页面后，可查看自身当前助力值、获取对应奖励的助力值差值、对应奖励、好友助力榜。助力值分为三个档位，分别为2000、8888、10000。用户达到2000，可领取现金红包15元（QQ用户获得等值Q币）；用户达到8888，可获得《乱世王者》门神君主形象（30天）、橙色将魂*3，寻龙令*8，高级行军加速*8；用户达到10000，可获得现金红包28元、现金红包88元、现金红包888元、门神君主形象（60天）抽奖机会。用户可以通过邀请好友助力提高助力值（随机生成10-15），若好友通过点击用户链接并进行助力及游戏下载，则可生成200-400的更高助力值；<br>
-                                    （4）每位用户最多可以帮助1位好友助力；<br>
+                                    （2）进入本H5并观看完引入动画后，用户将获得初始助力值888。点击“助力门神”按钮，将提示用户获得游戏礼包及现金红包。《乱世王者》新用户可下载并登录游戏，再回到本H5领取2元红包及游戏礼包奖励；老用户可进行游戏登录，领取游戏内大礼包奖励，并获得100-200助力值。用户也可直接进入活动页面，用户在奖励活动时间内可发起活动以获取奖励，若奖励活动结束则无法获取；<br>
+                                    （3）用户进入活动页面后，可查看自身当前助力值、获取对应奖励的助力值差值、对应奖励、好友助力榜。助力值分为三个档位，分别为2000、8888、10000。用户达到2000，可领取现金红包15元（QQ用户获得等值Q币）；用户达到8888，可获得《乱世王者》尉迟恭君主形象（30天））、橙色将魂*3，寻龙令*8，高级行军加速*8；用户达到10000，可获得现金红包28元、现金红包88元、现金红包888元、尉迟恭君主形象（60天）抽奖机会。用户可以通过邀请好友助力提高助力值（随机生成10-15），若好友通过点击用户链接并进行助力及游戏下载，则可生成200-400的更高助力值；<br>
+                                    （4）《乱世王者》新用户下载并登录游戏，再回到本H5领取的2元红包限量发放，先到先得；<br>
                                     （5）微信用户获得现金红包可在“微信钱包”查看；QQ用户红包将以等值Q币形式获得。<br>
                                 </text>
                                 
@@ -296,7 +311,7 @@
                     <div class="reward-2000 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="confirm btn-hide button abcter sizcover">
-                            <a href="JavaScript:hideFrame();" class="link"></a>
+                            <a href="JavaScript:hideFrame();" class="link" ontouchend="PTTSendClick('btn','btn-confirm','15元红包')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -304,7 +319,7 @@
                     <div class="reward-8888 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="confirm btn-hide button abcter sizcover">
-                            <a href="JavaScript:hideFrame();" class="link"></a>
+                            <a href="JavaScript:hideFrame();" class="link" ontouchend="PTTSendClick('btn','btn-confirm','游戏礼包')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -314,7 +329,7 @@
                     <div class="money-28 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="confirm btn-hide button abcter sizcover">
-                            <a href="JavaScript:hideFrame();" class="link"></a>
+                            <a href="JavaScript:hideFrame();" class="link" ontouchend="PTTSendClick('btn','btn-confirm','28元现金劵')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -322,7 +337,7 @@
                     <div class="money-88 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="confirm btn-hide button abcter sizcover">
-                            <a href="JavaScript:hideFrame();" class="link"></a>
+                            <a href="JavaScript:hideFrame();" class="link" ontouchend="PTTSendClick('btn','btn-confirm','28元现金劵')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -331,7 +346,7 @@
                     <!-- <div class="money-100 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="confirm btn-hide button abcter sizcover">
-                            <a href="" class="link"></a>
+                            <a href="" class="link" ontouchend="PTTSendClick('btn','btn-confirm','100元京东劵')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div> -->
@@ -339,7 +354,7 @@
                     <div class="money-888 frame abcter siz hide">
                         <div class="content abcter sizcover"></div>
                         <div class="confirm btn-hide button abcter sizcover">
-                            <a href="JavaScript:hideFrame();" class="link"></a>
+                            <a href="JavaScript:hideFrame();" class="link" ontouchend="PTTSendClick('btn','btn-confirm','888元现金劵')"></a>
                         </div>
                         <div class="btn-hide-frame abs sizcover"></div>
                     </div>
@@ -350,25 +365,25 @@
                             <div class="sect-title sizcont"></div>
                             <label for="platform">
                                 平台:
-                                <select class="platform select sizcont" id="platform">
+                                <select class="platform select sizcont" id="platform" ontouchend="PTTSendClick('btn','section-platform','选择平台')">
                                     <option value="#">请选择平台</option>
                                 </select>
                             </label>
                             <label for="system">
                                 系统:
-                                <select class="system select sizcont" id="system">
+                                <select class="system select sizcont" id="system" ontouchend="PTTSendClick('btn','section-system','选择系统')">
                                     <option value="">请选择系统</option>
                                 </select>
                             </label>
                             <label for="server">
                                 服务:
-                                <select class="server select sizcont" id="server">
+                                <select class="server select sizcont" id="server" ontouchend="PTTSendClick('btn','section-server','选择服务器')">
                                     <option value="">请选择服务器</option>
                                 </select>
                             </label>
                             <label for="role" id="ulinkRoleSelectParent">
                                 角色:
-                                <select class="role select sizcont" id="role">
+                                <select class="role select sizcont" id="role" ontouchend="PTTSendClick('btn','section-role','选择角色')">
                                     <option value="">请选择角色</option>
                                 </select>
                             </label>
@@ -379,17 +394,17 @@
                         <div class="btn-hide-frame abs sizcont"></div>
                     </div>
 
-                     <!-- friend-list   好友列表 -->
-                     <div class="friend-wrap frame abcter siz hide">
+                    <!-- friend-list   好友列表 -->
+                    <div class="friend-wrap frame abcter siz hide">
                         <div class="list-title sizcover"></div>
                         <div class="list-container permit-scroll">
                             <!-- <div class="friend-item permit-scroll">
-                                <img src="../ossweb-img/act_friend.png" class="friend-avatar sizcover">
+                                <img src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/act_friend.png" class="friend-avatar sizcover">
                                 <div class="name">呢称xxxx</div>
                                 <div class="value">440</div>
                             </div>
                             <div class="friend-item permit-scroll">
-                                <img src="../ossweb-img/act_friend.png" class="friend-avatar sizcover">
+                                <img src="//game.gtimg.cn/images/slg/act/4876/a20210119msu/act_friend.png" class="friend-avatar sizcover">
                                 <div class="name">呢称xxxx</div>
                                 <div class="value">420</div>
                             </div> -->
@@ -440,6 +455,7 @@
     <script src="//game.gtimg.cn/images/js/mmdPlugin/mmd-plugin.min.1.0.2.js" charset="utf-8"></script>
     <script src="//game.gtimg.cn/images/js/mmdVideoPlayer/mmd.videoplayer.min.1.0.1.js" charset="utf-8"></script>
     <script src="//ossweb-img.qq.com/images/js/comm/showDialog.min.js"></script>
+    <script src="https://game.gtimg.cn/images/ulink/ulinksdk/vconsole.min.js"></script>
     <script>
         // TGMobileShare({
         // shareTitle:'乱世王者', //不设置或设置为空时，页面有title，则调取title
@@ -452,7 +468,7 @@
 
 
     <!-- 数据上报 -->
-    <!-- <script>
+    <script>
         //此段代码不能放到外链JS中，
         var setSite={ //设置网站属性 
             siteType:"a20210119ms", //必填项:"os"代表是官网，如果不是，则填写actName例如a20160701xxx
@@ -462,9 +478,13 @@
             osact:0 //选填项:默认是0。osact=0表示非官网专题；osact=pc表示pc官网/pc官网专题；osact=m表示移动官网/移动官网专题；osact=ingame表示微社区/微社区专题
         };
         if(typeof(pgvMain)=='function')pgvMain();//千万不能忘记！
-    </script> -->
+    </script>
     <% if (process.env.NODE_ENV === 'handover') { %>
-        <script type="text/javascript" src="../ossweb-img/main.js"></script>
+        <!-- <script type="text/javascript" src="../ossweb-img/main.js"></script> -->
+        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+            <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry.substr(htmlWebpackPlugin.files.publicPath.length); %>
+            <script type="text/javascript" src="<%= jsFile %>"></script>
+        <% } %>
     <% } else { %>
         <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
             <% var jsFile = htmlWebpackPlugin.files.chunks[chunk].entry.substr(htmlWebpackPlugin.files.publicPath.length); %>
@@ -505,7 +525,8 @@
             fristFrame: $('.frist-wrap'), // 第一次登录弹框 下载游戏得15元红包
             newRewardFrame: $('.new-user-reward-wrap'),  // 弹窗-新用户下载得奖励
             succeedFrame: $('.succeed-wrap'), // 弹窗-已为好友助力
-            oldUserFrame: $('.old-user-wrap'),  // 老用户领取框
+            oldUserFrame: $('.re-old-user-wrap'),  // 老用户领取框
+            oldConFrame: $('.con-old-user-wrap'),  // 老用户 确认领取框
             noneFrame: $('.none-wrap'),  // 今日奖励已被领取完
             notFoundFrame: $('.no-found-role'),  // 未在该服务区找到角色
             comHelpFrame: $('.help-com-wrap'),  //  弹窗-提示已满助力次数
@@ -531,7 +552,6 @@
         // gloadElements.pageBoxs.frameWrap 最外层盒子, 黑色背景遮罩层, 遍历隐藏所以子元素
         gloadEls.pageBoxs.frameWrap.children().hide();
         gloadEls.pageBoxs.frameWrap.show();
-        console.log(el);
         el.show();
     };
 
@@ -542,40 +562,41 @@
     }
     
     // 三个奖品点击弹窗
-    gloadEls.buttons.prizedOne.click(() => {
+    gloadEls.buttons.prizedOne.click(function () {
         reward(1)
         // showFrame(gloadEls.frames.reward_2000_Frame);
     })
-    gloadEls.buttons.prizeTwo.click(() => {
+    gloadEls.buttons.prizeTwo.click(function () {
         reward(2)
         // showFrame(gloadEls.frames.reward_8888_Frame);
     })
-    gloadEls.buttons.prizeThree.click(() => {
+    gloadEls.buttons.prizeThree.click(function () {
         showFrame(gloadEls.frames.rouletteFrame);
     })
 
     // 右上角叉按钮
-    $('.btn-hide-frame').on('click', (event) => {
+    $('.btn-hide-frame').on('click', function (event) {
         var frameWrap = gloadEls.pageBoxs.frameWrap // 蒙层弹框
         frameWrap.hide();
         $(event.srcElement).parent().hide();
+        PTTSendClick('btn','btn-hide','取消按钮');
     });
 
     // 邀请好友 分享按钮
-    gloadEls.buttons.shareButton.click(() => {
+    gloadEls.buttons.shareButton.click(function () {
         share() 
         // showFrame(gloadEls.frames.shareFrame);
     })
     // 隐藏分享
-    gloadEls.frames.shareFrame.click(() => {
+    gloadEls.frames.shareFrame.click(function () {
         hideFrame();
     })
     // 显示好友列表
-    gloadEls.buttons.checkDetail.click(() => {
+    gloadEls.buttons.checkDetail.click(function () {
         showFrame(gloadEls.frames.friendFrame);
     })
     // 显示规则
-    gloadEls.buttons.relusButton.click(() => {
+    gloadEls.buttons.relusButton.click(function () {
         showFrame(gloadEls.frames.relusFrame);
     })
     // 自定义文本框
@@ -587,8 +608,8 @@
 
     window.setProgress(10000, 0);    // 设置任务进度百分比
 
-    // 是否第一次进入
-    window.canNewUser(true);
+    // 是否新用户，  ture || flase    ture 为新用户， flase 老用户
+    window.canNewUser(false);
 
     // 视频播放完 弹窗控制函数
     window.videoEndFrame = function () {

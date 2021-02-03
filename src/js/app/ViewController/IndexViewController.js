@@ -61,7 +61,7 @@ function initVideo () {
     var videoPlayer = new MMD.VideoPlayer(
         {
             videoElement: document.getElementById('video'),
-            src: '../../../media/vh.mp4',  // 从视频地址池获取到的地址   mediaURLData['7701']
+            src: mediaURLData['7701'],  // 从视频地址池获取到的地址   mediaURLData['7701']
             loop: false,
             muted: false,
             poster: '',
@@ -145,14 +145,17 @@ var IndexViewController = function () {
         window.canNewUser = function canNewUser (user) {
             _private.isNewUser = user;
             if (_private.isNewUser) {
+                loadMod.show();
                 _private.gload.load();
             } else {
-                $('.m-loading').hide();
-                $('.m-index').show();
+                loadMod.hide();
+                videoMod.hide();
+                indexMod.show();
             }
         };
         // 页面加载完成
         _private.gload.onload = function () {
+            console.log(_private.isNewUser);
             _private.hieprogressText();
             startButton.show();
             // 点击拿红包按钮
@@ -235,9 +238,15 @@ var IndexViewController = function () {
         });
         // 视频播放结尾的监听
         _private.videoEnd = function () {
-            if (video.currentTime >= 53.02) {
+            if (video.currentTime >= 54.02) {
                 skipButton.hide();
                 helpButton.show();
+                if (!_private.isAudioPlay) {
+                    // 播放音频
+                    console.log(audio.play, '音频');
+                    audio.play();
+                    _private.isAudioPlay = true;
+                }
             }
             if (video.currentTime >= 55.5 && !_private.isHelp) {
                 // 用户4秒没有点击助力，自动进入
