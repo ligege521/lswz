@@ -616,6 +616,7 @@ body {
 	// z-index: 99999;
 	width: 100%;
 	height: 100%;
+	font-size: 0.2rem;
 	background-image: url("@{img}/frame/mesk_bg.png");
 	.frame{
 		position: relative;
@@ -671,8 +672,10 @@ body {
 			background-image:  url("@{img}/frame/share.png");
 			background-size: 100% 100%;
 			position: absolute;
-			top: 40px;
-			right: 40px;
+			top: 0.6rem;
+			right: 1.2rem;
+			  -webkit-transform: scale(2);
+			transform: scale(2);
 		
 		}
 	}
@@ -742,7 +745,10 @@ body {
 			font-size: 0.3rem;
 			font-weight: 800;
 			word-wrap: break-word;
-    		word-break: normal;
+			word-break: normal;
+			box-sizing: border-box;
+			padding-top: 0.8rem;
+			line-height: 0.5rem;
 		}
 	}
 
@@ -901,8 +907,8 @@ body {
 			height: 5.09rem;
 			background-image:url('@{img}/frame/roulette.png');
 			background-size: cover;
-		    left: 0.78rem;
-    		top: 0.75rem;
+			left: 0.78rem;
+			top: 0.75rem;
 		}
 		.panel-btn{
 			position: absolute;
@@ -1031,10 +1037,11 @@ body {
 			margin: 0 auto;
 			overflow: scroll;
 			.friend-item{
-				height: 69px;
+				margin-top: 0.1rem;
 				display: flex;
 				align-items: center;
 				justify-content: flex-start;
+				font-size: 0.24rem;
 			}
 			.friend-avatar {
 				width: 54px;
@@ -1043,7 +1050,12 @@ body {
 				overflow: hidden;
 			}
 			.name{
-				margin-left: 10px;
+				margin-left: 0.1rem;
+				width: 2.2rem;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				padding: 0.01rem;
 			}
 			.value{
 				flex: 1;
@@ -1053,109 +1065,4 @@ body {
 	}
 }
 
-.m-visitors {
-	z-index: 2;
-	// z-index: 999;
-	width: 750px;
-	height: 1624px;
-	background-image: url("@{img}/visitors/vis_bg.png");
-	.btn-relus{
-		width: 0.69rem;
-		height: 1.03rem;
-		top: 2rem;
-		left: 6.5rem;
-		background-image: url("@{img}/index/relus.png");
-	}
-	.visitors-main{
-		position: relative;
-		width: 646px;
-		height: 1206px;
-		.top-content{
-			width: 100%;
-			height: 590px;
-			.top-title{
-				width: 2.36rem;
-				height: 0.25rem;
-				margin: 0 auto;
-				margin-top: 1.2rem;
-				background-image: url("@{img}/visitors/top_title.png");
-			}
-			.friend-value{
-				width: 4.5rem;
-				height: 1.1rem;
-				margin: 0 auto;
-				margin-top: 10px;
-				text-align: center;
-				.value-img{
-					width: 70px;
-					height: 90px;
-				}
-			}
-			.title-text{
-				width: 595px;
-				height: 110px;
-				margin: 0 auto;
-				background-image: url("@{img}/visitors/cen_title.png");
-			}
-			.button-box{
-				width: 600px;
-				height: 110px;
-				margin: 0 auto;
-				display: flex;
-				margin-top: 0.5rem;
-				.help_friend-btn{
-					width: 298px;
-					height: 94px;
-					background-image: url("@{img}/visitors/help_friend_btn.png");
-				}
-				.invitation-btn{
-					width: 298px;
-					height: 94px;
-					background-image: url("@{img}/visitors/invitation_btn.png");
-				}
-			}
-			.invitation-tip{
-				width: 393px;
-				height: 62px;
-				margin: 0 auto;
-				background-image: url("@{img}/visitors/invitation_tip.png");
-			}
-		}
-		.friend-list{
-			position: relative;
-			width: 578px;
-			height: 443px;
-			background-image: url("@{img}/visitors/friend_list.png");
-			.list-container{
-				position: absolute;
-				bottom: 0.5rem;
-				left: 50%;
-				-webkit-transform: translateX(-50%);
-				transform: translateX(-50%);
-				width: 3.8rem;
-				height: 2rem;
-				overflow: scroll;
-				.friend-item{
-					height: 69px;
-					display: flex;
-					align-items: center;
-					justify-content: flex-start;
-				}
-				.avatar{
-					width: 54px;
-					height: 54px;
-					border-radius: 50%;
-					overflow: hidden;
-				}
-				.name{
-					margin-left: 10px;
-				}
-				.value{
-					flex: 1;
-				    text-align: right;
-				}
-			}
-		}
-	}
-}
 

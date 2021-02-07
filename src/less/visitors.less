@@ -166,6 +166,7 @@ body {
 	// z-index: 99999;
 	width: 100%;
 	height: 100%;
+	font-size: 0.2rem;
 	background-image: url("@{img}/frame/mesk_bg.png");
 	.frame{
 		position: relative;
@@ -209,6 +210,9 @@ body {
 		.appraisal{
 			background-image: url('@{img}/button/btn_appraisal.png');
 		}
+		.com_share{
+			background-image: url('@{img}/button/btn_com_share.png');
+		}
 	}
 	
 	.share{
@@ -221,8 +225,9 @@ body {
 			background-image:  url("@{img}/frame/share.png");
 			background-size: 100% 100%;
 			position: absolute;
-			top: 40px;
-			right: 40px;
+			top: 0.6rem;
+			right: 1.2rem;
+			transform: scale(2);
 		
 		}
 	}
@@ -292,10 +297,30 @@ body {
 			font-size: 0.3rem;
 			font-weight: 800;
 			word-wrap: break-word;
-    		word-break: normal;
+			word-break: normal;
+			box-sizing: border-box;
+			padding-top: 0.8rem;
+			line-height: 0.5rem;
 		}
 	}
 
+	.download-wrap{
+		.message-text{
+			width: 5.11rem;
+			height: 2.93rem;
+			margin: 0 auto;
+			overflow: hidden;
+			text-align: center;
+			font-family: boldFont;
+			font-size: 0.3rem;
+			font-weight: 800;
+			word-wrap: break-word;
+			word-break: normal;
+			box-sizing: border-box;
+			padding-top: 0.8rem;
+			line-height: 0.5rem;
+		}
+	}
 
 	.help-com-wrap{
 		.content{
@@ -303,6 +328,24 @@ body {
 			height: 0.32rem;
 			margin: 0 auto;
 			background-image: url('@{img}/frame/help_com.png');
+		}
+	}
+
+	.tip-wrap{
+		.content{
+			width: 4.8rem;
+			height: 0.92rem;
+			margin: 0 auto;
+			background-image: url('@{img}/frame/tip_text.png');
+		}
+	}
+
+	.limit-wrap{
+		.content{
+			width: 4.6rem;
+			height: 1.52rem;
+			margin: 0 auto;
+			background-image: url('@{img}/frame/limit_text.png');
 		}
 	}
 	
@@ -415,10 +458,11 @@ body {
 				overflow: scroll;
 				font-size: 14px;
 				.friend-item{
-					height: 69px;
+					margin-top: 10px;
 					display: flex;
 					align-items: center;
 					justify-content: flex-start;
+					font-size: 0.24rem;
 				}
 				.avatar{
 					width: 54px;
@@ -427,7 +471,12 @@ body {
 					overflow: hidden;
 				}
 				.name{
-					margin-left: 10px;
+					margin-left: 0.1rem;
+					width: 2.2rem;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					padding: 0.01rem;
 				}
 				.value{
 					flex: 1;

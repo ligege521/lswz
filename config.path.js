@@ -6,5 +6,5 @@ module.exports = {
     dev: '',
     dist: '/',
     prod: 'https://qrss.treedom.cn/streetgame/',
-    handover: '//game.gtimg.cn/images/slg/cp/a20210119ms/'
+    handover: '//game.gtimg.cn/images/slg/act/4876/a20210119msu/'
 };

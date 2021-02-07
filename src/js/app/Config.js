@@ -342,23 +342,31 @@ Config.pageImgs = {
         },
         {
             name: 'share_1',
-            url: require('../../img/share_img/share_1.jpg')
+            url: require('../../img/share_img/share1.jpg')
         },
         {
             name: 'share_2',
-            url: require('../../img/share_img/share_2.jpg')
+            url: require('../../img/share_img/share2.jpg')
         },
         {
             name: 'share_3',
-            url: require('../../img/share_img/share_3.jpg')
+            url: require('../../img/share_img/share3.jpg')
         },
         {
             name: 'share_4',
-            url: require('../../img/share_img/share_4.jpg')
+            url: require('../../img/share_img/share4.jpg')
         },
         {
             name: 'share_5',
-            url: require('../../img/share_img/share_5.jpg')
+            url: require('../../img/share_img/share5.jpg')
+        },
+        {
+            name: 'head',
+            url: require('../../img/index/head.jpg')
+        },
+        {
+            name: 'share',
+            url: require('../../img/frame/share.png')
         }
     ],
     sprites: [
@@ -418,6 +426,18 @@ Config.visitorsImgs = {
         {
             name: 'mesk_bg',
             url: require('../../img/frame/mesk_bg.png')
+        },
+        {
+            name: 'tip_text',
+            url: require('../../img/frame/tip_text.png')
+        },
+        {
+            name: 'limit_text',
+            url: require('../../img/frame/limit_text.png')
+        },
+        {
+            name: 'btn_com_share',
+            url: require('../../img/button/btn_com_share.png')
         },
         {
             name: '0',
