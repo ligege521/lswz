@@ -15,10 +15,20 @@
     <meta id="share-description" itemprop="description" name="Description" content="乱世王者-门神新年送豪礼">
     <meta id="share-name" itemprop="name" content="">
     <meta id="share-image" itemprop="image" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-
+    <!-- 适配苹果底部导航栏 -->
+    <script>
+         pushHistory();
+            function pushHistory() {
+            var state1 = {
+                title: "title",
+                url: "#"
+            };
+            window.history.pushState(state1, "title", "#");
+            }
+    </script>
     <!-- rem布局初始化设置start -->
     <script type="text/javascript">
         <%= require('raw-loader!./src/js/app/rem.js') %>
@@ -79,7 +89,7 @@
 
 
                 <!-- 弹框模块 -->
-                <div class="m-frame absf sizcover hide">
+                <div class="m-frame abcter sizcover hide">
                     <!-- 分享弹框 -->
                     <div class="share abcter hide" ontouchend="PTTSendClick('btn','cancel-share','取消分享')">
                         <div class="share-icon"></div>
